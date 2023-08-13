@@ -1,0 +1,186 @@
+@use "../root/index.scss" as variables;
+
+.login-main-div {
+  position: relative;
+  overflow: hidden;
+
+  .card-div {
+    z-index: 10;
+    gap: 20px;
+    width: 500px;
+    padding: 40px;
+    .title {
+      p {
+        font-size: 50px;
+      }
+    }
+    .description {
+      width: 90%;
+      text-align: center;
+      p {
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+.bg-div {
+  transform: rotate(-45deg);
+  width: 500px;
+  height: 700px;
+}
+
+.bg-top {
+  position: absolute;
+  top: -300px;
+  left: -50px;
+}
+
+.bg-bottom {
+  position: absolute;
+  bottom: -300px;
+  right: -50px;
+}
+
+@media (max-width: 1200px) {
+  .login-main-div {
+    .card-div {
+      gap: 15px;
+      width: 450px;
+
+      .title {
+        p {
+          font-size: 40px;
+        }
+      }
+      .description {
+        p {
+          font-size: 18px;
+        }
+      }
+    }
+  }
+
+  .bg-div {
+    width: 500px;
+    height: 650px;
+  }
+
+  .bg-top {
+    top: -270px;
+    left: -50px;
+  }
+
+  .bg-bottom {
+    bottom: -270px;
+    right: -50px;
+  }
+}
+
+@media (max-width: 900px) {
+  .login-main-div {
+    .card-div {
+      width: 400px;
+      .title {
+        p {
+          font-size: 30px;
+        }
+      }
+      .description {
+        p {
+          font-size: 16px;
+        }
+      }
+      .goto-div {
+        p {
+          font-size: 10px;
+        }
+      }
+    }
+  }
+
+  .bg-div {
+    width: 400px;
+    height: 450px;
+  }
+
+  .bg-top {
+    top: -170px;
+  }
+
+  .bg-bottom {
+    bottom: -170px;
+  }
+}
+@media (max-width: 600px) {
+  .login-main-div {
+    .card-div {
+      width: 350px;
+      .title {
+        p {
+          font-size: 30px;
+        }
+      }
+      .description {
+        p {
+          font-size: 14px;
+        }
+      }
+      .goto-div {
+        p {
+          font-size: 8px;
+        }
+      }
+    }
+  }
+
+  .bg-div {
+    width: 400px;
+    height: 450px;
+  }
+
+  .bg-top {
+    top: -170px;
+  }
+
+  .bg-bottom {
+    bottom: -170px;
+  }
+}
+@media (max-width: 500px) {
+  .login-main-div {
+    .card-div {
+      width: 250px;
+      .title {
+        p {
+          font-size: 25px;
+        }
+      }
+      .description {
+        p {
+          font-size: 12px;
+        }
+      }
+      .goto-div {
+        p {
+          font-size: 8px;
+        }
+      }
+    }
+  }
+
+  .bg-div {
+    display: none;
+    visibility: hidden;
+    width: 400px;
+    height: 450px;
+  }
+
+  .bg-top {
+    top: -170px;
+  }
+
+  .bg-bottom {
+    bottom: -170px;
+  }
+}
