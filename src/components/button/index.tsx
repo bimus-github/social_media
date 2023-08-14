@@ -16,7 +16,7 @@ function Button(props: ButtonProps) {
       </button>
     );
   return (
-    <button className="button bg-black b-r-10px sh-x-s">
+    <button type="submit" className="button bg-black b-r-10px sh-x-s">
       <p className="button-p font-s-20px c-w">{text}</p>
     </button>
   );

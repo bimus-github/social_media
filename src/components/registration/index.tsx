@@ -1,6 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { auth } from "@/firebase";
+import { User, onAuthStateChanged } from "firebase/auth";
+import { useEffect, useState } from "react";
 
 interface CheckingUserProps {
   children: React.ReactNode[];
@@ -8,6 +10,19 @@ interface CheckingUserProps {
 
 function Registration(props: CheckingUserProps) {
   const [isLoggedIn, setIsUserLogged] = useState(false);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (user) => {
+      if (user) {
+        setIsUserLogged(true);
+      } else {
+        setIsUserLogged(false);
+      }
+    });
+
+    return unsubscribe;
+  }, []);
+
   return (
     <div className="width-full bg-c">
       {isLoggedIn ? (
