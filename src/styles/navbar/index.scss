@@ -1,0 +1,147 @@
+@use "../root/index.scss" as v;
+
+.navbar-component-main {
+  transition: 0.5s;
+
+  .navbar {
+    .logo {
+      padding: 10px 30px;
+      p {
+        font-size: 25px;
+        color: v.$text-2-color;
+      }
+    }
+
+    .input-search-div {
+      width: 300px;
+      .input-search {
+        width: 100%;
+        outline: none;
+      }
+    }
+
+    .routes-div {
+      width: 25%;
+    }
+
+    // side bar
+
+    .sidebar-div {
+      width: 0;
+      position: fixed;
+      z-index: 1;
+      top: 0;
+      right: 0;
+      overflow-x: hidden;
+      transition: 0.5s;
+
+      a {
+        text-decoration: none;
+        color: v.$text-2-color;
+        display: block;
+        transition: 0.3s;
+      }
+      .closebtn:hover {
+        font-size: 40px;
+        text-decoration-line: none;
+        text-decoration-thickness: 2px;
+        text-decoration-color: v.$blue;
+        color: v.$blue;
+      }
+      :hover {
+        font-size: 26px;
+        text-decoration-line: underline;
+        text-decoration-thickness: 2px;
+        text-decoration-color: v.$blue;
+        color: v.$blue;
+      }
+    }
+    .open-menu-div {
+      display: none;
+      visibility: hidden;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .navbar-component-main {
+    .navbar {
+      .logo {
+        p {
+          font-size: 24px;
+        }
+      }
+
+      .input-search-div {
+        width: 220px;
+      }
+      .routes-div {
+        width: 30%;
+      }
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .navbar-component-main {
+    .navbar {
+      .logo {
+        padding: 10px 15px;
+        p {
+          font-size: 22px;
+        }
+      }
+
+      .input-search-div {
+        width: 200px;
+      }
+      .routes-div {
+        width: 40%;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .navbar-component-main {
+    .navbar {
+      .logo {
+        padding: 5px 10px;
+        p {
+          font-size: 20px;
+        }
+      }
+
+      .input-search-div {
+        width: 200px;
+      }
+
+      .routes-div {
+        display: none;
+        visibility: hidden;
+      }
+
+      .open-menu-div {
+        display: flex;
+        visibility: visible;
+      }
+    }
+  }
+}
+
+@media (max-width: 400px) {
+  .navbar-component-main {
+    .navbar {
+      .logo {
+        padding: 10px 5px;
+        p {
+          font-size: 16px;
+        }
+      }
+
+      .input-search-div {
+        width: 180px;
+      }
+    }
+  }
+}

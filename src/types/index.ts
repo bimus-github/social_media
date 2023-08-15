@@ -5,3 +5,9 @@ export enum ErrorMessages {
   "USER_NOT_FOUND" = 2,
   "ALREADY_HAVE_USER" = 3,
 }
+
+export type NavbarRoutes = {
+  name: string;
+  path: string;
+  icon: JSX.Element;
+};

@@ -22,6 +22,10 @@ p {
   font-weight: bold;
 }
 
+.p-f-s-700 {
+  font-weight: 700;
+}
+
 .c-l {
   color: #7c7c7c;
 }
@@ -32,6 +36,10 @@ p {
 
 .c {
   color: #212b27;
+}
+
+.c-2 {
+  color: #384d6c;
 }
 
 .c-b {
@@ -84,6 +92,10 @@ p {
 
 .pr-l-c {
   color: #6482ae;
+}
+
+.b-c {
+  border: 1.534px solid #2b538f;
 }
 
 .row {
@@ -286,6 +298,10 @@ p {
   height: 100px;
 }
 
+.height-70px {
+  height: 70px;
+}
+
 .height-60px {
   height: 60px;
 }
@@ -296,6 +312,10 @@ p {
 
 .height-40px {
   height: 40px;
+}
+
+.height-35px {
+  height: 35px;
 }
 
 .height-30px {
@@ -362,6 +382,34 @@ p {
   font-size: 10px;
 }
 
+.gap-30px {
+  gap: 30px;
+}
+
+.gap-25px {
+  gap: 25px;
+}
+
+.gap-20px {
+  gap: 20px;
+}
+
+.gap-15px {
+  gap: 15px;
+}
+
+.gap-10px {
+  gap: 10px;
+}
+
+.gap-15px {
+  gap: 15px;
+}
+
+.gap-3px {
+  gap: 3px;
+}
+
 .padding-30px {
   padding: 30px;
 }
@@ -388,6 +436,10 @@ p {
 
 .padding-3px {
   padding: 3px;
+}
+
+.padding-1px {
+  padding: 1px;
 }
 
 .padding-b-30px {
@@ -444,6 +496,10 @@ p {
 
 .padding-t-3px {
   padding-top: 3px;
+}
+
+.padding-l-35px {
+  padding-left: 35px;
 }
 
 .padding-l-30px {
@@ -642,7 +698,7 @@ p {
   margin-right: 3px;
 }
 
-.text-d-l-u {
+.t-d-l-u {
   text-decoration-line: underline;
 }
 
@@ -660,6 +716,10 @@ p {
 
 .sh-x-s {
   box-shadow: -2px 3px 5px 0px rgba(168, 168, 168, 0.75);
+}
+
+.b-n {
+  border: none;
 }
 
 .b-r-100px {
