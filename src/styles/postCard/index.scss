@@ -1,0 +1,67 @@
+@use "../root/index.scss" as v;
+
+.post-card-main-div {
+  padding-left: 40px;
+
+  .title-div {
+    .title-p {
+      font-size: 30px;
+    }
+  }
+  .post-messages-div {
+    .textarea-div {
+      border: 1.534px solid;
+      border-color: v.$text-2-color;
+      width: 70%;
+      .post-btns-div {
+        .icon-div {
+          width: 40px;
+          height: 40px;
+          border-radius: 100px;
+          margin: 0 5px;
+          justify-content: center;
+          align-items: center;
+          display: flex;
+          .icon {
+            width: 30px;
+            height: 30px;
+          }
+
+          .send-icon {
+            color: v.$blue;
+          }
+          .file-icon {
+            color: v.$text-2-color;
+          }
+          .emoji-icon {
+            color: v.$text-2-color;
+          }
+        }
+
+        .icon-div:hover {
+          background-color: v.$bg-gery-light-screen-color;
+        }
+      }
+      .textarea {
+        border: none;
+        outline: none;
+        resize: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .post-card-main-div {
+    .title-div {
+      .title-p {
+        font-size: 20px;
+      }
+    }
+    .post-messages-div {
+      .textarea-div {
+        height: 200px;
+      }
+    }
+  }
+}

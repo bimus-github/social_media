@@ -18,6 +18,7 @@ $grey: #ff0000;
 $light-grey: #000;
 $red: #ff0000;
 $blue: rgb(0, 200, 255);
+$yellow: rgb(202, 202, 12);
 
 // initial
 * {
@@ -351,6 +352,9 @@ p {
 }
 
 // gap
+.gap-40px {
+  gap: 40px;
+}
 .gap-30px {
   gap: 30px;
 }

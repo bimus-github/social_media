@@ -14,7 +14,7 @@ function MainUserInfromation() {
   const [openEditProfile, setOpenEditProfile] = useState<boolean>(false);
   const [firstName, setFistName] = useState<string>("");
   return (
-    <div className="main-information-div width-90 bg-w-c sh-x-s padding-30px">
+    <div className="main-information-div width-90 bg-w-c sh-x-s padding-30px b-r-20px">
       <div className="title-div j-c-c a-i-c gap-10px">
         <p className="title-p t-d-l-u">User Profile</p>
         {!openEditProfile ? (

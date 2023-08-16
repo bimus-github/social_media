@@ -796,4 +796,55 @@ p {
 
 .b-w-1px {
   border-width: 1px;
+}
+
+.post-card-main-div {
+  padding-left: 40px;
+}
+.post-card-main-div .title-div .title-p {
+  font-size: 30px;
+}
+.post-card-main-div .post-messages-div .textarea-div {
+  border: 1.534px solid;
+  border-color: #384d6c;
+  width: 70%;
+}
+.post-card-main-div .post-messages-div .textarea-div .post-btns-div .icon-div {
+  width: 40px;
+  height: 40px;
+  border-radius: 100px;
+  margin: 0 5px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+.post-card-main-div .post-messages-div .textarea-div .post-btns-div .icon-div .icon {
+  width: 30px;
+  height: 30px;
+}
+.post-card-main-div .post-messages-div .textarea-div .post-btns-div .icon-div .send-icon {
+  color: rgb(0, 200, 255);
+}
+.post-card-main-div .post-messages-div .textarea-div .post-btns-div .icon-div .file-icon {
+  color: #384d6c;
+}
+.post-card-main-div .post-messages-div .textarea-div .post-btns-div .icon-div .emoji-icon {
+  color: #384d6c;
+}
+.post-card-main-div .post-messages-div .textarea-div .post-btns-div .icon-div:hover {
+  background-color: #f4f4f4;
+}
+.post-card-main-div .post-messages-div .textarea-div .textarea {
+  border: none;
+  outline: none;
+  resize: none;
+}
+
+@media (max-width: 600px) {
+  .post-card-main-div .title-div .title-p {
+    font-size: 20px;
+  }
+  .post-card-main-div .post-messages-div .textarea-div {
+    height: 200px;
+  }
 }/*# sourceMappingURL=index.css.map */
