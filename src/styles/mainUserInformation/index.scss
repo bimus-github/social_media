@@ -1,0 +1,104 @@
+@use "../root/index.scss" as v;
+
+.main-information-div {
+  flex-direction: column;
+  gap: 30px;
+  transition: 0.5s;
+
+  .title-div {
+    width: 200px;
+
+    .edit-title-icon {
+      color: v.$text-2-color;
+    }
+    .edit-title-icon:hover {
+      color: v.$blue;
+    }
+    .title-p {
+      font-size: 30px;
+      color: v.$text-2-color;
+    }
+  }
+
+  .information-div {
+    .img-div {
+      .img {
+        width: 200px;
+        height: 200px;
+      }
+      .edit-btn-for-phones-div {
+        display: none;
+        visibility: hidden;
+      }
+    }
+  }
+
+  .edit-information-component-div {
+    .div-column-row {
+      flex-direction: row;
+      width: 80%;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .main-information-div {
+    .edit-information-component-div {
+      .div-column-row {
+        flex-direction: row;
+        width: 90%;
+      }
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .main-information-div {
+    .information-div {
+      .img-div {
+        .edit-btn-for-phones-div {
+          display: flex;
+          visibility: visible;
+        }
+      }
+
+      .edit-btn-for-larg-devices {
+        display: none;
+        visibility: hidden;
+      }
+    }
+    .edit-information-component-div {
+      .div-column-row {
+        flex-direction: row;
+        width: 90%;
+      }
+    }
+  }
+}
+
+@media (max-width: 720px) {
+  .main-information-div {
+    .edit-information-component-div {
+      .div-column-row {
+        flex-direction: column;
+      }
+    }
+  }
+}
+@media (max-width: 600px) {
+  .main-information-div {
+    .title-div {
+      .title-p {
+        font-size: 25px;
+      }
+    }
+    .information-div {
+      flex-direction: column;
+    }
+    .edit-information-component-div {
+      .div-column-row {
+        flex-direction: column;
+      }
+    }
+  }
+}

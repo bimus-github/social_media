@@ -166,8 +166,16 @@ p {
   width: 100vw;
 }
 
-.width-full {
-  width: 100%;
+.width-90 {
+  width: 90%;
+}
+
+.width-80 {
+  width: 80%;
+}
+
+.width-70 {
+  width: 70%;
 }
 
 .width-600px {
@@ -402,8 +410,12 @@ p {
   gap: 10px;
 }
 
-.gap-15px {
-  gap: 15px;
+.gap-8px {
+  gap: 8px;
+}
+
+.gap-5px {
+  gap: 5px;
 }
 
 .gap-3px {

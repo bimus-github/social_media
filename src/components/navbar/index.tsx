@@ -155,7 +155,7 @@ function Navbar({ children }: NavbarProps) {
           <MenuIcon />
         </div>
       </div>
-      <div className="children">{children}</div>
+      <div className="children width-full">{children}</div>
     </div>
   );
 }

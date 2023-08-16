@@ -794,61 +794,70 @@ p {
   border-width: 1px;
 }
 
-.input-div {
-  gap: 5px;
+.main-information-div {
+  flex-direction: column;
+  gap: 30px;
+  transition: 0.5s;
 }
-.input-div .input {
-  border: 1.534px solid rgba(0, 0, 0, 0.1);
-  width: 400px;
-  height: 50px;
+.main-information-div .title-div {
+  width: 200px;
 }
-.input-div .input-textarea {
-  border: 1.534px solid rgba(0, 0, 0, 0.1);
-  width: 400px;
-  min-height: 200px;
-  resize: none;
-}
-.input-div p {
-  font-weight: 600;
-  padding-left: 5px;
+.main-information-div .title-div .edit-title-icon {
   color: #384d6c;
+}
+.main-information-div .title-div .edit-title-icon:hover {
+  color: rgb(0, 200, 255);
+}
+.main-information-div .title-div .title-p {
+  font-size: 30px;
+  color: #384d6c;
+}
+.main-information-div .information-div .img-div .img {
+  width: 200px;
+  height: 200px;
+}
+.main-information-div .information-div .img-div .edit-btn-for-phones-div {
+  display: none;
+  visibility: hidden;
+}
+.main-information-div .edit-information-component-div .div-column-row {
+  flex-direction: row;
+  width: 80%;
 }
 
 @media (max-width: 1200px) {
-  .input-div .input {
-    width: 350px;
-  }
-  .input-div .input-textarea {
-    width: 350px;
+  .main-information-div .edit-information-component-div .div-column-row {
+    flex-direction: row;
+    width: 90%;
   }
 }
 @media (max-width: 900px) {
-  .input-div .input {
-    width: 300px;
+  .main-information-div .information-div .img-div .edit-btn-for-phones-div {
+    display: flex;
+    visibility: visible;
   }
-  .input-div .input-textarea {
-    width: 300px;
+  .main-information-div .information-div .edit-btn-for-larg-devices {
+    display: none;
+    visibility: hidden;
+  }
+  .main-information-div .edit-information-component-div .div-column-row {
+    flex-direction: row;
+    width: 90%;
+  }
+}
+@media (max-width: 720px) {
+  .main-information-div .edit-information-component-div .div-column-row {
+    flex-direction: column;
   }
 }
 @media (max-width: 600px) {
-  .input-div .input {
-    width: 250px;
+  .main-information-div .title-div .title-p {
+    font-size: 25px;
   }
-  .input-div .input-textarea {
-    width: 250px;
+  .main-information-div .information-div {
+    flex-direction: column;
   }
-  .input-div p {
-    font-size: 14px;
-  }
-}
-@media (max-width: 500px) {
-  .input-div .input {
-    width: 220px;
-  }
-  .input-div .input-textarea {
-    width: 220px;
-  }
-  .input-div p {
-    font-size: 12px;
+  .main-information-div .edit-information-component-div .div-column-row {
+    flex-direction: column;
   }
 }/*# sourceMappingURL=index.css.map */

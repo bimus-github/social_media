@@ -24,6 +24,23 @@ function Input(props: InputProps) {
     error = false,
   } = props;
 
+  if (isTextarea) {
+    return (
+      <div className="input-div height-full  column">
+        <p className="font-s-16px">{title}</p>
+        <textarea
+          style={{
+            borderColor: error ? "red" : "",
+          }}
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+          className="input-textarea b-r-10px padding-l-10px padding-t-10px sh-x-s"
+          placeholder={placeholder}
+        />
+      </div>
+    );
+  }
+
   return (
     <div className="input-div  column">
       <p className="font-s-16px">{title}</p>
