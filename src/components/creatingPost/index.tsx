@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import "@/styles/postCard/index.css";
+import "@/styles/creatingPost/index.css";
 import { ChangeEvent, FormEvent, useState } from "react";
 
 import AttachmentIcon from "@mui/icons-material/Attachment";
@@ -17,7 +17,7 @@ import { Message_Type } from "@/types";
 import { storage } from "@/firebase";
 import { createMessage } from "@/firebase/message";
 
-function PostCard() {
+function CreatingCard() {
   const currentUser = useAppSelector((state) => state.currentUser);
   const [openEmoji, setOpenEmoji] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
@@ -177,4 +177,4 @@ function PostCard() {
   );
 }
 
-export default PostCard;
+export default CreatingCard;

@@ -39,7 +39,7 @@ function Registration(props: CheckingUserProps) {
   }, [dispatch]);
 
   return (
-    <div className="width-full height-full bg-c">
+    <div className="width-full height-100vh bg-c">
       {isLoggedIn ? (
         <div className="bg-c width-full height-full">
           {/* if there is user */}

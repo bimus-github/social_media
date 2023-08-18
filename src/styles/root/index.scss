@@ -265,7 +265,7 @@ p {
 
 // height
 .height-100vh {
-  height: 100vh;
+  max-height: 100vh;
 }
 .height-full {
   height: 100%;
