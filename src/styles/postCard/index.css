@@ -174,8 +174,28 @@ p {
   width: 80%;
 }
 
-.width-70 {
-  width: 70%;
+.width-60 {
+  width: 60%;
+}
+
+.width-50 {
+  width: 50%;
+}
+
+.width-40 {
+  width: 40%;
+}
+
+.width-30 {
+  width: 30%;
+}
+
+.width-20 {
+  width: 20%;
+}
+
+.width-10 {
+  width: 10%;
 }
 
 .width-600px {
@@ -807,16 +827,17 @@ p {
 .post-card-main-div .post-messages-div .textarea-div {
   border: 1.534px solid;
   border-color: #384d6c;
-  width: 70%;
 }
 .post-card-main-div .post-messages-div .textarea-div .post-btns-div .icon-div {
+  display: flex;
+  border: none;
+  background-color: #fff;
   width: 40px;
   height: 40px;
   border-radius: 100px;
   margin: 0 5px;
   justify-content: center;
   align-items: center;
-  display: flex;
 }
 .post-card-main-div .post-messages-div .textarea-div .post-btns-div .icon-div .icon {
   width: 30px;
@@ -838,6 +859,9 @@ p {
   border: none;
   outline: none;
   resize: none;
+}
+.post-card-main-div .post-messages-div .image-view-card-div {
+  position: relative;
 }
 
 @media (max-width: 600px) {

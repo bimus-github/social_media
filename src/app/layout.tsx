@@ -1,6 +1,7 @@
 import Registration from "@/components/registration";
 import { Metadata } from "next";
 import "@/styles/root/index.css";
+import ReduxProvider from "@/components/reduxProvider";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,10 +18,12 @@ export default function RootLayout({ onbording, pages }: RootLayoutProps) {
   return (
     <html lang="en">
       <body>
-        <Registration>
-          {onbording}
-          {pages}
-        </Registration>
+        <ReduxProvider>
+          <Registration>
+            {onbording}
+            {pages}
+          </Registration>
+        </ReduxProvider>
       </body>
     </html>
   );

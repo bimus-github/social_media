@@ -1,18 +1,82 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import SendIcon from "@mui/icons-material/Send";
+import "@/styles/postCard/index.css";
+import { ChangeEvent, FormEvent, useState } from "react";
+
 import AttachmentIcon from "@mui/icons-material/Attachment";
 import EmojiEmotionsIcon from "@mui/icons-material/EmojiEmotions";
+import DeleteIcon from "@mui/icons-material/Delete";
+import SendIcon from "@mui/icons-material/Send";
+import { CircularProgress, IconButton } from "@mui/material";
 
 import Picker from "emoji-picker-react";
 
-import "@/styles/postCard/index.css";
-import { useState } from "react";
+import { useAppSelector } from "@/strore/hooks";
+import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import { Message_Type } from "@/types";
+import { storage } from "@/firebase";
+import { createMessage } from "@/firebase/message";
 
 function PostCard() {
+  const currentUser = useAppSelector((state) => state.currentUser);
   const [openEmoji, setOpenEmoji] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
-  const [selectedImage, setSelectedImage] = useState<string>("");
+  const [imageUrl, setImageUrl] = useState<string>("");
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const onHandleSaveImage = (e: ChangeEvent<HTMLInputElement>) => {
+    const image = e.target.files;
+    if (image) {
+      const storageRef = ref(storage, `messages_images/${image[0].name}`);
+      const uploadTask = uploadBytesResumable(storageRef, image[0]);
+
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const percent = Math.round(
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          );
+
+          // update progress
+          if (percent === 0) setLoading(true);
+
+          if (percent === 100) setLoading(false);
+        },
+        (err) => console.log(err),
+        () => {
+          getDownloadURL(uploadTask.snapshot.ref).then(async (url) => {
+            setImageUrl(url);
+          });
+        }
+      );
+    }
+  };
+
+  const handleDeleteImage = () => {
+    setImageUrl("");
+  };
+
+  const handleSaveMessage = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const newMessageData: Message_Type = {
+      id: currentUser.id,
+      message,
+      imageUrl,
+      username: currentUser.username,
+      firstname: currentUser.firstname,
+    };
+
+    createMessage(newMessageData)
+      .then(() => {
+        // message created
+      })
+      .finally(() => {
+        setLoading(false);
+        setMessage("");
+        setImageUrl("");
+      });
+  };
 
   return (
     <div className="post-card-main-div column bg-w-c width-90 bg-w-c sh-x-s padding-30px b-r-20px gap-20px">
@@ -20,8 +84,11 @@ function PostCard() {
         <p className="title-p t-d-l-u c-2">Post Your Memories</p>
       </div>
 
-      <div className="post-messages-div width-full j-c-c gap-20px column">
-        <div className="textarea-div column b-r-10px padding-10px sh-x-s">
+      <form
+        onSubmit={handleSaveMessage}
+        className="post-messages-div width-full j-c-c gap-20px row"
+      >
+        <div className="textarea-div width-60 column b-r-10px padding-10px sh-x-s">
           <textarea
             name=""
             id=""
@@ -45,19 +112,26 @@ function PostCard() {
               </div>
               <label className="icon-div padding-10px">
                 <AttachmentIcon className="file-icon icon" />
-                <input
-                  type="file"
-                  hidden
-                  onChange={(e) => {
-                    URL.createObjectURL(e.target.files![0]);
-                    console.log(e.target.files![0]);
-                  }}
-                />
+                <input type="file" hidden onChange={onHandleSaveImage} />
               </label>
             </div>
-            <div className="icon-div padding-10px">
+            <IconButton
+              style={
+                message.length === 0 || imageUrl.length === 0
+                  ? {
+                      display: "none",
+                      visibility: "hidden",
+                    }
+                  : {
+                      display: "flex",
+                      visibility: "visible",
+                    }
+              }
+              className="icon-div padding-10px"
+              type="submit"
+            >
               <SendIcon className="send-icon icon height-30px width-30px" />
-            </div>
+            </IconButton>
             <div
               style={
                 openEmoji
@@ -79,7 +153,26 @@ function PostCard() {
             </div>
           </div>
         </div>
-      </div>
+        <div className="image-view-card-div width-40 j-c-c a-i-c">
+          {loading ? (
+            <CircularProgress color="success" />
+          ) : (
+            <img src={imageUrl} alt="" className="width-full b-r-30px sh-x-s" />
+          )}
+          {imageUrl.length !== 0 && (
+            <IconButton
+              style={{
+                position: "absolute",
+                left: "0",
+                bottom: "0",
+              }}
+              onClick={handleDeleteImage}
+            >
+              <DeleteIcon fontSize="large" color="error" />
+            </IconButton>
+          )}
+        </div>
+      </form>
     </div>
   );
 }

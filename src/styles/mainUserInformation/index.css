@@ -390,6 +390,10 @@ p {
   font-size: 10px;
 }
 
+.gap-40px {
+  gap: 40px;
+}
+
 .gap-30px {
   gap: 30px;
 }
@@ -798,9 +802,6 @@ p {
   flex-direction: column;
   gap: 30px;
   transition: 0.5s;
-}
-.main-information-div .title-div {
-  width: 200px;
 }
 .main-information-div .title-div .edit-title-icon {
   color: #384d6c;

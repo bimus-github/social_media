@@ -12,16 +12,18 @@
     .textarea-div {
       border: 1.534px solid;
       border-color: v.$text-2-color;
-      width: 70%;
       .post-btns-div {
         .icon-div {
+          display: flex;
+          border: none;
+          background-color: #fff;
           width: 40px;
           height: 40px;
           border-radius: 100px;
           margin: 0 5px;
           justify-content: center;
           align-items: center;
-          display: flex;
+
           .icon {
             width: 30px;
             height: 30px;
@@ -47,6 +49,9 @@
         outline: none;
         resize: none;
       }
+    }
+    .image-view-card-div {
+      position: relative;
     }
   }
 }

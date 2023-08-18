@@ -18,6 +18,7 @@ interface RegistartionCardProps {
   setPassword: (v: string) => void;
   setEmail: (v: string) => void;
   error?: ErrorMessages;
+  loading?: boolean;
 }
 
 function RegistartionCard(props: RegistartionCardProps) {
@@ -33,6 +34,7 @@ function RegistartionCard(props: RegistartionCardProps) {
     setEmail,
     setPassword,
     error,
+    loading,
   } = props;
 
   const onSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -73,7 +75,7 @@ function RegistartionCard(props: RegistartionCardProps) {
             error === ErrorMessages.PASSWORD_SHORT
           }
         />
-        <Button text={btnText} />
+        <Button text={btnText} loading={loading} />
 
         <div className="got-div">
           <p>
@@ -90,6 +92,8 @@ function RegistartionCard(props: RegistartionCardProps) {
               "There is no user with this email!"}
             {error === ErrorMessages.ALREADY_HAVE_USER &&
               "The email already in use!"}
+            {error === ErrorMessages.NETWORK_REQUEST_FAILED &&
+              "It seems your network is working slowly. Please, tey again!"}
           </p>
         </div>
       </form>

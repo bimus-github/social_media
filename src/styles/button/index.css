@@ -390,6 +390,10 @@ p {
   font-size: 10px;
 }
 
+.gap-40px {
+  gap: 40px;
+}
+
 .gap-30px {
   gap: 30px;
 }
@@ -410,8 +414,12 @@ p {
   gap: 10px;
 }
 
-.gap-15px {
-  gap: 15px;
+.gap-8px {
+  gap: 8px;
+}
+
+.gap-5px {
+  gap: 5px;
 }
 
 .gap-3px {
@@ -797,6 +805,12 @@ p {
 }
 .button .button-p {
   font-weight: 700;
+}
+
+.file {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .bg-white {

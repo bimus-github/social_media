@@ -43,6 +43,8 @@ function Navbar({ children }: NavbarProps) {
 
   const [sidenavIsOpen, setSidenavIsOpen] = useState<boolean>(false);
 
+  console.log("Navbar component worked ");
+
   /* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
   function openNav() {
     document.getElementById("sidebar-div")!.style.width = "200px";

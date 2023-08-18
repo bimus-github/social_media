@@ -1,26 +1,129 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import "@/styles/mainUserInformation/index.css";
-import Button from "@/components/button";
-import EditIcon from "@mui/icons-material/Edit";
+import { User_Type } from "@/types";
+
+import { CircularProgress } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import Input from "../input";
+import EditIcon from "@mui/icons-material/Edit";
+
+import { storage } from "@/firebase";
+import { currentUserActions } from "@/strore/slices/currentUser";
+import { useAppDispatch, useAppSelector } from "@/strore/hooks";
+import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+
+import { updateUser } from "@/firebase/user";
+import Button from "@/components/button";
+import Input from "@/components/input";
 
 const profileImage =
-  "https://s3-alpha-sig.figma.com/img/dacb/255d/022631d944ebe5dee4aa2a2c6c3e0a86?Expires=1692576000&Signature=i4hMAPOCBU1EeaocpROLze0SH7a92ISbX8tAyzyg514UANEgjuwM5cEreDR7XuJvZIVfkDDkgCJtZjWvmf3wrfrLGCQTeK9iycoS18xRS6R8JIXSIKWdvES2V~Vwa6FU83hnZ9pfByz2Y~coUhbZXukzPKjUDjmX4Z176njucF9Lp0HRsDsqXiyNT-HT-rd-vVWuWEwOdhyQQzBBThdU8lZ0uegOmLrrSm6drzX4BZucYFbdl~8Y9s9EQN3OQQ2vASn2hhfP2lQhbBzSsdQ8VhgI46BJOjQI3C0DR5GeaFqelN-gnsDh5LOvTV7h7ChS5co95~sr21RCREfEks0grQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4";
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-4TTdIlL3swAddqR7ZY42BAgAo5Xj4lawocuvnjIuEVXm7ref0Xb9D0LTqfCNyPVGpy8&usqp=CAU";
 
 function MainUserInfromation() {
+  const currentUser = useAppSelector((state) => state.currentUser);
+  const dispatch = useAppDispatch();
+
+  const [loading, setLoading] = useState<boolean>(false);
   const [openEditProfile, setOpenEditProfile] = useState<boolean>(false);
-  const [firstName, setFistName] = useState<string>("");
+  const [noInfoAboutUser, setNoInfoAboutUser] = useState<boolean>(false);
+
+  const [firstname, setFirstname] = useState<string>(currentUser.firstname);
+  const [lastname, setLastname] = useState<string>(currentUser.lastname);
+  const [username, setUsername] = useState<string>(currentUser.username);
+  const [location, setLocation] = useState<string>(currentUser.location);
+  const [job, setJob] = useState<string>(currentUser.job);
+  const [about, setAbout] = useState<string>(currentUser.about);
+  const [imageUrl, setImageUrl] = useState<string>(currentUser.imageUrl);
+
+  console.log(currentUser);
+
+  const [imageUplaodPercentage, setImageUploadPercentage] =
+    useState<boolean>(false);
+
+  const uploadImage = (files: FileList) => {
+    const image = files[0];
+
+    const storageRef = ref(storage, `profile_images/${image.name}`);
+    const uploadTask = uploadBytesResumable(storageRef, image);
+
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        const percent = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+        );
+
+        // update progress
+        if (percent === 0) setImageUploadPercentage(true);
+
+        if (percent === 100) setImageUploadPercentage(false);
+      },
+      (err) => console.log(err),
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref).then(async (url) => {
+          await updateUser({
+            ...currentUser,
+            imageUrl: url,
+          });
+
+          setImageUrl(url);
+
+          dispatch(
+            currentUserActions.setUser({ ...currentUser, imageUrl: url })
+          );
+        });
+      }
+    );
+  };
+
+  const handleDeleteUserImage = () => {
+    alert("Are you sure?");
+    updateUser({ ...currentUser, imageUrl: "" })
+      .then(() => {
+        setImageUploadPercentage(true);
+      })
+      .finally(() => {
+        setImageUploadPercentage(false);
+        dispatch(currentUserActions.setUser({ ...currentUser, imageUrl: "" }));
+      });
+  };
+
+  const onUpdateUser = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const newUser: User_Type = {
+      id: currentUser.id,
+      about,
+      firstname,
+      imageUrl,
+      job,
+      lastname,
+      location,
+      username,
+    };
+
+    updateUser(newUser)
+      .then(() => {
+        setLoading(true);
+        dispatch(currentUserActions.setUser(newUser));
+      })
+      .finally(() => {
+        setOpenEditProfile(false);
+        setLoading(false);
+      });
+  };
+
   return (
     <div className="main-information-div width-90 bg-w-c sh-x-s padding-30px b-r-20px">
-      <div className="title-div j-c-c a-i-c gap-10px">
+      <div className="title-div a-i-c gap-10px">
         <p className="title-p t-d-l-u">User Profile</p>
         {!openEditProfile ? (
           <EditIcon
             onClick={() => setOpenEditProfile((p) => !p)}
             className="edit-title-icon"
+            style={{
+              color: noInfoAboutUser ? "red" : "",
+            }}
           />
         ) : (
           <CloseIcon
@@ -30,46 +133,94 @@ function MainUserInfromation() {
         )}
       </div>
 
-      <div className="information-div gap-20px">
-        <div className="img-div column gap-10px j-c-c a-i-c">
-          <img
-            src={profileImage}
-            alt="prfile image"
-            className="img b-r-100px"
-          />
-          <div className="edit-btn-for-phones-div column gap-10px">
-            <Button text="Upload New Photo " />
-            <Button text="Delete " isBgWhite />
+      <div className="information-div gap-20px j-c-s-b">
+        <div className="information-div gap-20px ">
+          <div className="img-div column gap-10px j-c-c a-i-c">
+            {!imageUplaodPercentage ? (
+              <img
+                src={
+                  currentUser.imageUrl.length !== 0
+                    ? currentUser.imageUrl
+                    : profileImage
+                }
+                alt="prfile image"
+                className="img b-r-100px"
+              />
+            ) : (
+              <div className="img b-r-100px j-c-c a-i-c ">
+                <CircularProgress color="success" />
+              </div>
+            )}
+            <div className="edit-btn-for-phones-div column gap-10px">
+              <Button
+                text="Upload New Photo "
+                isUploadImageBtn
+                setImage={(v) => uploadImage(v)}
+                loading={imageUplaodPercentage}
+              />
+              <Button
+                text="Delete "
+                isBgWhite
+                onClick={handleDeleteUserImage}
+              />
+            </div>
+          </div>
+
+          <div className="informations column gap-10px j-c-c">
+            <p className="name-p c-2 p-b">
+              {firstname.length === 0 ? (
+                <p style={{ color: "red" }}>Please create your firstname!</p>
+              ) : (
+                firstname
+              )}{" "}
+              {lastname}
+            </p>
+            <p className="user-name-p c-l">
+              {username.length === 0 ? (
+                <p style={{ color: "red" }}>Please create your username!</p>
+              ) : (
+                username
+              )}
+            </p>
+            <p className="job">
+              {job.length === 0 ? (
+                <p style={{ color: "red" }}>Please create your job!</p>
+              ) : (
+                job
+              )}
+            </p>
+            <p className="location c-l">
+              {location.length === 0 ? (
+                <p style={{ color: "red" }}>Please create your location!</p>
+              ) : (
+                location
+              )}
+            </p>
+            <p className="about-p c-2">
+              {about.length === 0 ? (
+                <p style={{ color: "red" }}>
+                  Please create some infromation about yourself!
+                </p>
+              ) : (
+                about
+              )}
+            </p>
           </div>
         </div>
 
-        <div className="informations column gap-10px j-c-c">
-          <p className="name-p c-2 p-b">Alaa Muhammad</p>
-          <p className="user-name-p c-l">@laamuhammad</p>
-          <p className="job">Developer</p>
-          <p className="location c-l">
-            Eastern European Time (EET), Cairo UTC +3
-          </p>
-          <p className="about-p c-2">
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industrys standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
-            only five centuries, but also the leap into electronic typesetting,
-            remaining essentially unchanged. It was popularised in the 1960s
-            with the release of Letraset sheets containing Lorem Ipsum passages,
-            and more recently with desktop publishing software like Aldus
-            PageMaker including versions of Lorem Ipsum.
-          </p>
-        </div>
-
         <div className="edit-btn-for-larg-devices gap-10px column a-i-c j-c-c">
-          <Button text="Upload New Photo " />
-          <Button text="Delete " isBgWhite />
+          <Button
+            text="Upload New Photo "
+            isUploadImageBtn
+            setImage={(v) => uploadImage(v)}
+            loading={imageUplaodPercentage}
+          />
+          <Button text="Delete " isBgWhite onClick={handleDeleteUserImage} />
         </div>
       </div>
 
-      <div
+      <form
+        onSubmit={onUpdateUser}
         style={
           !openEditProfile
             ? {
@@ -87,15 +238,15 @@ function MainUserInfromation() {
           <Input
             title="First Name"
             type="text"
-            value={firstName}
-            setValue={setFistName}
+            value={firstname}
+            setValue={setFirstname}
             placeholder="eg: Muhammad Amin"
           />
           <Input
             title="Last Name"
             type="text"
-            value={firstName}
-            setValue={setFistName}
+            value={lastname}
+            setValue={setLastname}
             placeholder="eg: Sherzod Aliy"
           />
         </div>
@@ -104,15 +255,15 @@ function MainUserInfromation() {
           <Input
             title="Profession"
             type="text"
-            value={firstName}
-            setValue={setFistName}
+            value={job}
+            setValue={setJob}
             placeholder="eg: Developer"
           />
           <Input
             title="Nickname"
             type="text"
-            value={firstName}
-            setValue={setFistName}
+            value={username}
+            setValue={setUsername}
             placeholder="eg: muhammad@min"
           />
         </div>
@@ -122,8 +273,8 @@ function MainUserInfromation() {
             <Input
               title="About"
               type="text"
-              value={firstName}
-              setValue={setFistName}
+              value={about}
+              setValue={setAbout}
               placeholder="Brief infromation about yourself"
               isTextarea
             />
@@ -132,15 +283,15 @@ function MainUserInfromation() {
             <Input
               title="Location"
               type="text"
-              value={firstName}
-              setValue={setFistName}
+              value={location}
+              setValue={setLocation}
               placeholder="eg: Tashkent, Uzbekistan"
             />
-            <Button text="Save Changes " />
+            <Button text="Save Changes " loading={loading} />
             <Button text="Clear " isBgWhite />
           </div>
         </div>
-      </div>
+      </form>
     </div>
   );
 }
