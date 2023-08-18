@@ -30,4 +30,5 @@ export type Message_Type = {
   imageUrl: string;
   username: string;
   firstname: string;
+  userImage: string;
 };

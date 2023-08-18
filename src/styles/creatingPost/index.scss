@@ -1,6 +1,6 @@
 @use "../root/index.scss" as v;
 
-.post-card-main-div {
+.creating-card-main-div {
   padding-left: 40px;
 
   .title-div {
@@ -8,7 +8,7 @@
       font-size: 30px;
     }
   }
-  .post-messages-div {
+  .creating-messages-div {
     .textarea-div {
       border: 1.534px solid;
       border-color: v.$text-2-color;
@@ -63,7 +63,7 @@
         font-size: 20px;
       }
     }
-    .post-messages-div {
+    .creating-messages-div {
       .textarea-div {
         height: 200px;
       }

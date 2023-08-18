@@ -65,6 +65,7 @@ function CreatingCard() {
       imageUrl,
       username: currentUser.username,
       firstname: currentUser.firstname,
+      userImage: currentUser.imageUrl,
     };
 
     createMessage(newMessageData)
@@ -79,14 +80,14 @@ function CreatingCard() {
   };
 
   return (
-    <div className="post-card-main-div column bg-w-c width-90 bg-w-c sh-x-s padding-30px b-r-20px gap-20px">
+    <div className="creating-card-main-div column bg-w-c width-90 bg-w-c sh-x-s padding-30px b-r-20px gap-20px">
       <div className="title-div gap-10px">
         <p className="title-p t-d-l-u c-2">Post Your Memories</p>
       </div>
 
       <form
         onSubmit={handleSaveMessage}
-        className="post-messages-div width-full j-c-c gap-20px row"
+        className="creating-messages-div width-full j-c-c gap-20px row"
       >
         <div className="textarea-div width-60 column b-r-10px padding-10px sh-x-s">
           <textarea
