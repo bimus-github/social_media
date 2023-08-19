@@ -27,8 +27,10 @@ export type User_Type = {
 export type Message_Type = {
   id: string;
   message: string;
+  userId: string;
   imageUrl: string;
   username: string;
   firstname: string;
   userImage: string;
+  job: string;
 };

@@ -17,11 +17,9 @@ export async function getCurrentUser(userId: string) {
   const docRef = doc(database, collection, userId);
 
   const docSnap = await getDoc(docRef);
-  console.log(docSnap);
 
   if (docSnap.exists()) {
     const user = docSnap.data() as User_Type;
-    console.log("Document data:", user);
     return user;
   } else {
     // docSnap.data() will be undefined in this case

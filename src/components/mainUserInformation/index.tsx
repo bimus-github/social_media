@@ -36,8 +36,6 @@ function MainUserInfromation() {
   const [about, setAbout] = useState<string>(currentUser.about);
   const [imageUrl, setImageUrl] = useState<string>(currentUser.imageUrl);
 
-  console.log(currentUser);
-
   const [imageUplaodPercentage, setImageUploadPercentage] =
     useState<boolean>(false);
 

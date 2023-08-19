@@ -1,4 +1,5 @@
 @use "../root/index.scss" as v;
+
 .post-card-main-div {
   .title-div {
     .title-p {
@@ -9,9 +10,10 @@
   .masonry-component {
     gap: 30px;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     .post-card-div {
-      width: 400px;
+      width: 320px;
+      height: auto;
       .header-div {
         align-items: center;
         .user-image-div {
@@ -33,18 +35,181 @@
         }
       }
       .img-div {
+        width: 320px;
+        height: 320px;
+        overflow: hidden;
+        position: relative;
+        .img {
+          width: 100%;
+          position: absolute;
+        }
       }
       .message-div {
         .message-p {
           max-height: calc(
-            1.2em * 4
+            1.2em * 3
           ); /* Set the maximum height to accommodate three lines */
           line-height: 1.2em; /* Set the line height to control the height of each line */
           overflow: hidden; /* Hide any overflowing content */
           text-overflow: ellipsis; /* Show an ellipsis (...) for truncated text */
           display: -webkit-box; /* Use legacy webkit box for multi-line truncation */
-          -webkit-line-clamp: 4; /* Limit the content to three lines */
+          -webkit-line-clamp: 3; /* Limit the content to three lines */
           -webkit-box-orient: vertical; /* Set vertical orientation for multi-line truncation */
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .post-card-main-div {
+    .title-div {
+      .title-p {
+        font-size: 30px;
+      }
+    }
+
+    .masonry-component {
+      grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+
+      .post-card-div {
+        width: 400px;
+        .header-div {
+          .user-image-div {
+            .img {
+              width: 40px;
+              height: 40px;
+            }
+          }
+          .user-div {
+            .username-p {
+              font-size: 25px;
+            }
+            .job-p {
+              font-size: 20px;
+            }
+          }
+        }
+        .img-div {
+          width: 400px;
+          height: 400px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  .post-card-main-div {
+    .title-div {
+      .title-p {
+        font-size: 30px;
+      }
+    }
+
+    .masonry-component {
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+      .post-card-div {
+        width: 300px;
+        .header-div {
+          .user-image-div {
+            .img {
+              width: 30px;
+              height: 30px;
+            }
+          }
+          .user-div {
+            .username-p {
+              font-size: 20px;
+            }
+            .job-p {
+              font-size: 16px;
+            }
+          }
+        }
+        .img-div {
+          width: 300px;
+          height: 300px;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 740px) {
+  .post-card-main-div {
+    .title-div {
+      .title-p {
+        font-size: 30px;
+      }
+    }
+
+    .masonry-component {
+      grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+
+      .post-card-div {
+        width: 500px;
+        .header-div {
+          .user-image-div {
+            .img {
+              width: 40px;
+              height: 40px;
+            }
+          }
+          .user-div {
+            .username-p {
+              font-size: 25px;
+            }
+            .job-p {
+              font-size: 20px;
+            }
+          }
+        }
+        .img-div {
+          width: 500px;
+          height: 500px;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 600px) {
+  .post-card-main-div {
+    .title-div {
+      .title-p {
+        font-size: 30px;
+      }
+    }
+
+    .masonry-component {
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+      .post-card-div {
+        width: 300px;
+        .header-div {
+          .user-image-div {
+            .img {
+              width: 25px;
+              height: 25px;
+            }
+          }
+          .user-div {
+            .username-p {
+              font-size: 18px;
+            }
+            .job-p {
+              font-size: 14px;
+            }
+          }
+        }
+        .img-div {
+          width: 300px;
+          height: 300px;
+        }
+        .message-div {
+          .message-p {
+            font-size: 14px;
+          }
         }
       }
     }

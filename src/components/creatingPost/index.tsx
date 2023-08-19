@@ -11,14 +11,16 @@ import { CircularProgress, IconButton } from "@mui/material";
 
 import Picker from "emoji-picker-react";
 
-import { useAppSelector } from "@/strore/hooks";
+import { useAppDispatch, useAppSelector } from "@/strore/hooks";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { Message_Type } from "@/types";
 import { storage } from "@/firebase";
 import { createMessage } from "@/firebase/message";
+import { messagesByUserActions } from "@/strore/slices/messagesByUser";
 
 function CreatingCard() {
   const currentUser = useAppSelector((state) => state.currentUser);
+  const dispatch = useAppDispatch();
   const [openEmoji, setOpenEmoji] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
   const [imageUrl, setImageUrl] = useState<string>("");
@@ -60,17 +62,22 @@ function CreatingCard() {
     e.preventDefault();
 
     const newMessageData: Message_Type = {
-      id: currentUser.id,
+      id: "",
       message,
       imageUrl,
       username: currentUser.username,
       firstname: currentUser.firstname,
       userImage: currentUser.imageUrl,
+      userId: currentUser.id,
+      job: currentUser.job,
     };
 
     createMessage(newMessageData)
-      .then(() => {
+      .then(({ data, e, ok }) => {
         // message created
+        if (ok) {
+          dispatch(messagesByUserActions.addMessage(data));
+        }
       })
       .finally(() => {
         setLoading(false);

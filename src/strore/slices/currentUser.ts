@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import type { RootState } from "..";
 import { User_Type } from "@/types";
 
 // Define the initial state using that type
@@ -22,7 +21,7 @@ export const currentUserSlices = createSlice({
       return action.payload;
     },
 
-    resetUser: (state, _) => initialState,
+    resetUser: (__, _) => initialState,
   },
 });
 
