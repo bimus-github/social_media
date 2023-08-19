@@ -1,11 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
 import currentUser from "@/strore/slices/currentUser";
 import messageByUser from "@/strore/slices/messagesByUser";
+import messages from "@/strore/slices/messages";
+import users from "@/strore/slices/users";
 
 const store = configureStore({
   reducer: {
     currentUser: currentUser,
     messageByUser: messageByUser,
+    messages: messages,
+    users: users,
   },
 });
 

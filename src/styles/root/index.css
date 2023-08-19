@@ -3,6 +3,10 @@
   margin: 0%;
 }
 
+body {
+  background: #a7d7c5;
+}
+
 div {
   display: flex;
 }

@@ -53,3 +53,22 @@ export async function getMessagesByUser(id: string) {
     return { ok: false, e: error, data: [] as Message_Type[] };
   }
 }
+
+export async function getMessages() {
+  try {
+    const querySnapshot = await getDocs(collection(database, collection_name));
+
+    const data: Message_Type[] = [];
+
+    querySnapshot.forEach((doc) => {
+      data.push(doc.data() as Message_Type);
+      console.log(doc.data());
+    });
+
+    return { ok: true, e: [], data };
+  } catch (error) {
+    console.log(error);
+
+    return { ok: false, e: error, data: [] as Message_Type[] };
+  }
+}

@@ -7,6 +7,8 @@ import Navbar from "../navbar";
 import { getCurrentUser } from "@/firebase/user";
 import { currentUserActions } from "@/strore/slices/currentUser";
 import { useAppDispatch } from "@/strore/hooks";
+import { getMessages } from "@/firebase/message";
+import { messagesActions } from "@/strore/slices/messages";
 
 interface CheckingUserProps {
   children: React.ReactNode[];
@@ -36,6 +38,16 @@ function Registration(props: CheckingUserProps) {
     });
 
     return unsubscribe;
+  }, [dispatch]);
+
+  useEffect(() => {
+    getMessages().then(({ data, e, ok }) => {
+      console.log(data);
+
+      if (ok) {
+        dispatch(messagesActions.setMessages(data));
+      }
+    });
   }, [dispatch]);
 
   return (

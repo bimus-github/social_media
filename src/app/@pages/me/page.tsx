@@ -23,7 +23,7 @@ function Me() {
 
   return (
     <div className="me-main-div width-full column a-i-c padding-20px gap-40px">
-      <MainUserInfromation />
+      <MainUserInfromation currentUser={currentUser} />
       <CreatingCard />
       <PostCrad title="Your Posts" data={messagesByUser} />
     </div>

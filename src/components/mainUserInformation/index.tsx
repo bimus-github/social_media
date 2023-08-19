@@ -1,6 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import "@/styles/mainUserInformation/index.css";
 import { User_Type } from "@/types";
 
@@ -20,13 +20,14 @@ import Input from "@/components/input";
 const profileImage =
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-4TTdIlL3swAddqR7ZY42BAgAo5Xj4lawocuvnjIuEVXm7ref0Xb9D0LTqfCNyPVGpy8&usqp=CAU";
 
-function MainUserInfromation() {
-  const currentUser = useAppSelector((state) => state.currentUser);
+interface Props {
+  currentUser: User_Type;
+}
+function MainUserInfromation({ currentUser }: Props) {
   const dispatch = useAppDispatch();
 
   const [loading, setLoading] = useState<boolean>(false);
   const [openEditProfile, setOpenEditProfile] = useState<boolean>(false);
-  const [noInfoAboutUser, setNoInfoAboutUser] = useState<boolean>(false);
 
   const [firstname, setFirstname] = useState<string>(currentUser.firstname);
   const [lastname, setLastname] = useState<string>(currentUser.lastname);
@@ -35,6 +36,20 @@ function MainUserInfromation() {
   const [job, setJob] = useState<string>(currentUser.job);
   const [about, setAbout] = useState<string>(currentUser.about);
   const [imageUrl, setImageUrl] = useState<string>(currentUser.imageUrl);
+
+  useEffect(() => {
+    setLoading(true);
+    setImageUploadPercentage(true);
+    if (username.length === 0) {
+      setUsername(currentUser.username);
+      setAbout(currentUser.about);
+      setLastname(currentUser.lastname);
+      setJob(currentUser.job);
+      setLocation(currentUser.location);
+    }
+    setImageUploadPercentage(false);
+    setLoading(false);
+  }, [currentUser, username]);
 
   const [imageUplaodPercentage, setImageUploadPercentage] =
     useState<boolean>(false);
@@ -119,9 +134,6 @@ function MainUserInfromation() {
           <EditIcon
             onClick={() => setOpenEditProfile((p) => !p)}
             className="edit-title-icon"
-            style={{
-              color: noInfoAboutUser ? "red" : "",
-            }}
           />
         ) : (
           <CloseIcon
@@ -166,7 +178,7 @@ function MainUserInfromation() {
 
           <div className="informations column gap-10px j-c-c">
             <p className="name-p c-2 p-b">
-              {firstname.length === 0 ? (
+              {currentUser.firstname.length === 0 ? (
                 <p style={{ color: "red" }}>Please create your firstname!</p>
               ) : (
                 firstname
@@ -174,7 +186,7 @@ function MainUserInfromation() {
               {lastname}
             </p>
             <p className="user-name-p c-l">
-              {username.length === 0 ? (
+              {currentUser.username.length === 0 ? (
                 <p style={{ color: "red" }}>Please create your username!</p>
               ) : (
                 username
@@ -188,14 +200,14 @@ function MainUserInfromation() {
               )}
             </p>
             <p className="location c-l">
-              {location.length === 0 ? (
+              {currentUser.location.length === 0 ? (
                 <p style={{ color: "red" }}>Please create your location!</p>
               ) : (
                 location
               )}
             </p>
             <p className="about-p c-2">
-              {about.length === 0 ? (
+              {currentUser.about.length === 0 ? (
                 <p style={{ color: "red" }}>
                   Please create some infromation about yourself!
                 </p>
