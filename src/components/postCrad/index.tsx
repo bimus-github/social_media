@@ -2,7 +2,6 @@
 "use client";
 import "@/styles/postCrad/index.css";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
-
 const userImage =
   "https://firebasestorage.googleapis.com/v0/b/app-nextjs-1.appspot.com/o/profile_images%2Fphoto_2023-07-04%2009.52.12.jpeg?alt=media&token=43145a1d-a5ba-467f-a19b-7448553db3cf";
 const imageUrl =
