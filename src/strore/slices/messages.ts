@@ -22,6 +22,14 @@ const messagesSlices = createSlice({
     deleteMessage: (state, action: { payload: string }) => {
       return state.filter((message) => message.id === action.payload);
     },
+
+    updateMessage: (state, action: { payload: Message_Type }) => {
+      const filter = state.filter(
+        (message) => message.id !== action.payload.id
+      );
+
+      return [...filter, action.payload];
+    },
   },
 });
 

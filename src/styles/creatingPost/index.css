@@ -887,6 +887,10 @@ p {
 }
 .creating-card-main-div .creating-messages-div .image-view-card-div {
   position: relative;
+  overflow: hidden;
+}
+.creating-card-main-div .creating-messages-div .image-view-card-div .img {
+  position: absolute;
 }
 
 @media (max-width: 600px) {

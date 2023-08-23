@@ -50,8 +50,14 @@
         resize: none;
       }
     }
+
     .image-view-card-div {
       position: relative;
+      overflow: hidden;
+
+      .img {
+        position: absolute;
+      }
     }
   }
 }

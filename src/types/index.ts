@@ -33,4 +33,7 @@ export type Message_Type = {
   firstname: string;
   userImage: string;
   job: string;
+  createdDate: string;
+  updatedDate: string;
+  likes: string[];
 };

@@ -2,7 +2,6 @@ import { Message_Type } from "@/types";
 import {
   collection,
   doc,
-  getDoc,
   getDocs,
   query,
   setDoc,
@@ -69,5 +68,15 @@ export async function getMessages() {
     console.log(error);
 
     return { ok: false, e: error, data: [] as Message_Type[] };
+  }
+}
+
+export async function updateMessageById(message: Message_Type) {
+  try {
+    const docRef = doc(database, collection_name, message.id);
+
+    await updateDoc(docRef, message);
+  } catch (error) {
+    console.log(error);
   }
 }

@@ -183,6 +183,10 @@ p {
   width: 80%;
 }
 
+.width-70 {
+  width: 70%;
+}
+
 .width-60 {
   width: 60%;
 }
@@ -873,7 +877,8 @@ p {
   color: rgb(0, 200, 255);
 }
 .post-card-main-div .masonry-component .post-card-div .img-div {
-  width: 100%;
+  min-width: 320px;
+  width: auto;
   height: 320px;
   overflow: hidden;
   position: relative;
@@ -890,6 +895,31 @@ p {
   display: -webkit-box; /* Use legacy webkit box for multi-line truncation */
   -webkit-line-clamp: 3; /* Limit the content to three lines */
   -webkit-box-orient: vertical; /* Set vertical orientation for multi-line truncation */
+}
+.post-card-main-div .masonry-component .post-card-div .bottom-btns-div .comment-div {
+  padding: 5px;
+}
+.post-card-main-div .masonry-component .post-card-div .bottom-btns-div .comment-div .input {
+  outline: none;
+  border: none;
+}
+.post-card-main-div .masonry-component .post-card-div .bottom-btns-div .comment-div:focus-within {
+  border: 1.534px solid;
+  border-color: #384d6c;
+}
+.post-card-main-div .masonry-component .post-card-div .bottom-btns-div .created-date-div p {
+  color: #7c7c7c;
+}
+.post-card-main-div .masonry-component .post-card-div .comments-div .first-comment-div .img-div-user {
+  width: 30px;
+  height: 30px;
+  position: relative;
+  overflow: hidden;
+}
+.post-card-main-div .masonry-component .post-card-div .comments-div .first-comment-div .img-div-user .img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 @media (max-width: 1200px) {
@@ -914,34 +944,9 @@ p {
     font-size: 20px;
   }
   .post-card-main-div .masonry-component .post-card-div .img-div {
-    width: 400px;
-    height: 400px;
-  }
-}
-@media (max-width: 1000px) {
-  .post-card-main-div .title-div .title-p {
-    font-size: 30px;
-  }
-  .post-card-main-div .masonry-component {
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  }
-  .post-card-main-div .masonry-component .post-card-div {
-    min-width: 300px;
+    min-width: 400px;
     width: auto;
-  }
-  .post-card-main-div .masonry-component .post-card-div .header-div .user-image-div .img {
-    width: 30px;
-    height: 30px;
-  }
-  .post-card-main-div .masonry-component .post-card-div .header-div .user-div .username-p {
-    font-size: 20px;
-  }
-  .post-card-main-div .masonry-component .post-card-div .header-div .user-div .job-p {
-    font-size: 16px;
-  }
-  .post-card-main-div .masonry-component .post-card-div .img-div {
-    width: 300px;
-    height: 300px;
+    height: 400px;
   }
 }
 @media (max-width: 740px) {
@@ -966,7 +971,8 @@ p {
     font-size: 20px;
   }
   .post-card-main-div .masonry-component .post-card-div .img-div {
-    width: 500px;
+    min-width: 500px;
+    width: auto;
     height: 500px;
   }
 }
@@ -975,10 +981,10 @@ p {
     font-size: 30px;
   }
   .post-card-main-div .masonry-component {
-    grid-template-columns: repeat(auto-fill, min(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, min(250px, 1fr));
   }
   .post-card-main-div .masonry-component .post-card-div {
-    min-width: 300px;
+    min-width: 250px;
     width: auto;
   }
   .post-card-main-div .masonry-component .post-card-div .header-div .user-image-div .img {
@@ -992,9 +998,9 @@ p {
     font-size: 14px;
   }
   .post-card-main-div .masonry-component .post-card-div .img-div {
-    min-width: 300px;
+    min-width: 250px;
     width: auto;
-    height: 300px;
+    height: 250px;
   }
   .post-card-main-div .masonry-component .post-card-div .message-div .message-p {
     font-size: 14px;

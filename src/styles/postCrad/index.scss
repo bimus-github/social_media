@@ -35,8 +35,10 @@
           color: v.$blue;
         }
       }
+
       .img-div {
-        width: 100%;
+        min-width: 320px;
+        width: auto;
         height: 320px;
         overflow: hidden;
         position: relative;
@@ -45,6 +47,7 @@
           position: absolute;
         }
       }
+
       .message-div {
         .message-p {
           max-height: calc(
@@ -56,6 +59,42 @@
           display: -webkit-box; /* Use legacy webkit box for multi-line truncation */
           -webkit-line-clamp: 3; /* Limit the content to three lines */
           -webkit-box-orient: vertical; /* Set vertical orientation for multi-line truncation */
+        }
+      }
+
+      .bottom-btns-div {
+        .comment-div {
+          padding: 5px;
+          .input {
+            outline: none;
+            border: none;
+          }
+        }
+        .comment-div:focus-within {
+          border: 1.534px solid;
+          border-color: v.$text-2-color;
+        }
+
+        .created-date-div {
+          p {
+            color: v.$text-light-color;
+          }
+        }
+      }
+
+      .comments-div {
+        .first-comment-div {
+          .img-div-user {
+            width: 30px;
+            height: 30px;
+            position: relative;
+            overflow: hidden;
+            .img {
+              position: absolute;
+              width: 100%;
+              height: 100%;
+            }
+          }
         }
       }
     }
@@ -93,47 +132,9 @@
           }
         }
         .img-div {
-          width: 400px;
+          min-width: 400px;
+          width: auto;
           height: 400px;
-        }
-      }
-    }
-  }
-}
-
-@media (max-width: 1000px) {
-  .post-card-main-div {
-    .title-div {
-      .title-p {
-        font-size: 30px;
-      }
-    }
-
-    .masonry-component {
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-
-      .post-card-div {
-        min-width: 300px;
-        width: auto;
-        .header-div {
-          .user-image-div {
-            .img {
-              width: 30px;
-              height: 30px;
-            }
-          }
-          .user-div {
-            .username-p {
-              font-size: 20px;
-            }
-            .job-p {
-              font-size: 16px;
-            }
-          }
-        }
-        .img-div {
-          width: 300px;
-          height: 300px;
         }
       }
     }
@@ -171,7 +172,8 @@
           }
         }
         .img-div {
-          width: 500px;
+          min-width: 500px;
+          width: auto;
           height: 500px;
         }
       }
@@ -188,10 +190,10 @@
     }
 
     .masonry-component {
-      grid-template-columns: repeat(auto-fill, min(300px, 1fr));
+      grid-template-columns: repeat(auto-fill, min(250px, 1fr));
 
       .post-card-div {
-        min-width: 300px;
+        min-width: 250px;
         width: auto;
         .header-div {
           .user-image-div {
@@ -210,9 +212,9 @@
           }
         }
         .img-div {
-          min-width: 300px;
+          min-width: 250px;
           width: auto;
-          height: 300px;
+          height: 250px;
         }
         .message-div {
           .message-p {

@@ -61,6 +61,8 @@ function CreatingCard() {
   const handleSaveMessage = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    const createdDate = new Date().toLocaleDateString("en-US");
+
     const newMessageData: Message_Type = {
       id: "",
       message,
@@ -70,6 +72,9 @@ function CreatingCard() {
       userImage: currentUser.imageUrl,
       userId: currentUser.id,
       job: currentUser.job,
+      createdDate,
+      updatedDate: "",
+      likes: [],
     };
 
     createMessage(newMessageData)
@@ -165,7 +170,11 @@ function CreatingCard() {
           {loading ? (
             <CircularProgress color="success" />
           ) : (
-            <img src={imageUrl} alt="" className="width-full b-r-30px sh-x-s" />
+            <img
+              src={imageUrl}
+              alt=""
+              className="img height-full b-r-30px sh-x-s"
+            />
           )}
           {imageUrl.length !== 0 && (
             <IconButton
