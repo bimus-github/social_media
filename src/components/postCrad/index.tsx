@@ -16,8 +16,6 @@ interface Props {
 }
 
 function PostCrad({ title, data }: Props) {
-  console.log(data);
-
   return (
     <div className="post-card-main-div width-90 column gap-40px bg-w-c sh-x-s padding-30px b-r-20px">
       <div className="title-div a-i-c gap-10px">

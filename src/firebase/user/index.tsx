@@ -50,7 +50,7 @@ export async function getUsers(id: string) {
   try {
     const q = query(
       collection(database, collection_name),
-      where("userId", "!=", id)
+      where("id", "!=", id)
     );
     const querySnapshot = await getDocs(q);
 

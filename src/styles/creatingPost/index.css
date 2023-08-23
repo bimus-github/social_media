@@ -3,6 +3,10 @@
   margin: 0%;
 }
 
+body {
+  background: #a7d7c5;
+}
+
 div {
   display: flex;
 }
@@ -16,6 +20,7 @@ p {
   color: #212b27;
   font-style: normal;
   font-weight: 400;
+  white-space: pre-line;
 }
 
 .p-b {
@@ -166,6 +171,10 @@ p {
   width: 100vw;
 }
 
+.width-full {
+  width: 100%;
+}
+
 .width-90 {
   width: 90%;
 }
@@ -230,6 +239,10 @@ p {
   width: 250px;
 }
 
+.width-200px {
+  width: 200px;
+}
+
 .width-150px {
   width: 150px;
 }
@@ -279,7 +292,7 @@ p {
 }
 
 .height-100vh {
-  max-height: 100vh;
+  height: 100vh;
 }
 
 .height-full {
@@ -318,12 +331,24 @@ p {
   height: 250px;
 }
 
+.height-200px {
+  height: 200px;
+}
+
 .height-150px {
   height: 150px;
 }
 
 .height-100px {
   height: 100px;
+}
+
+.height-90px {
+  height: 90px;
+}
+
+.height-80px {
+  height: 80px;
 }
 
 .height-70px {

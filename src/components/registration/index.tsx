@@ -4,11 +4,12 @@ import { auth } from "@/firebase";
 import { onAuthStateChanged } from "firebase/auth";
 import { useEffect, useState } from "react";
 import Navbar from "../navbar";
-import { getCurrentUser } from "@/firebase/user";
+import { getCurrentUser, getUsers } from "@/firebase/user";
 import { currentUserActions } from "@/strore/slices/currentUser";
 import { useAppDispatch } from "@/strore/hooks";
 import { getMessages } from "@/firebase/message";
 import { messagesActions } from "@/strore/slices/messages";
+import { usersActions } from "@/strore/slices/users";
 
 interface CheckingUserProps {
   children: React.ReactNode[];
@@ -19,10 +20,7 @@ function Registration(props: CheckingUserProps) {
 
   const dispatch = useAppDispatch();
 
-  console.log("registration use effect worked");
   useEffect(() => {
-    console.log("registration worked");
-
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
         setIsUserLogged(true);
@@ -32,22 +30,24 @@ function Registration(props: CheckingUserProps) {
             dispatch(currentUserActions.setUser(currentUser));
           }
         });
+
+        getUsers(user.uid).then(({ data, e, ok }) => {
+          if (ok) {
+            dispatch(usersActions.setUsers(data));
+          }
+        });
       } else {
         setIsUserLogged(false);
       }
     });
 
-    return unsubscribe;
-  }, [dispatch]);
-
-  useEffect(() => {
     getMessages().then(({ data, e, ok }) => {
-      console.log(data);
-
       if (ok) {
         dispatch(messagesActions.setMessages(data));
       }
     });
+
+    return unsubscribe;
   }, [dispatch]);
 
   return (

@@ -12,7 +12,8 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     .post-card-div {
-      width: 320px;
+      min-width: 320px;
+      width: auto;
       height: auto;
       .header-div {
         align-items: center;
@@ -35,7 +36,7 @@
         }
       }
       .img-div {
-        width: 320px;
+        width: 100%;
         height: 320px;
         overflow: hidden;
         position: relative;
@@ -73,7 +74,8 @@
       grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
 
       .post-card-div {
-        width: 400px;
+        min-width: 400px;
+        width: auto;
         .header-div {
           .user-image-div {
             .img {
@@ -111,7 +113,8 @@
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 
       .post-card-div {
-        width: 300px;
+        min-width: 300px;
+        width: auto;
         .header-div {
           .user-image-div {
             .img {
@@ -136,6 +139,7 @@
     }
   }
 }
+
 @media (max-width: 740px) {
   .post-card-main-div {
     .title-div {
@@ -148,7 +152,8 @@
       grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
 
       .post-card-div {
-        width: 500px;
+        min-width: 500px;
+        width: auto;
         .header-div {
           .user-image-div {
             .img {
@@ -173,6 +178,7 @@
     }
   }
 }
+
 @media (max-width: 600px) {
   .post-card-main-div {
     .title-div {
@@ -182,10 +188,11 @@
     }
 
     .masonry-component {
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fill, min(300px, 1fr));
 
       .post-card-div {
-        width: 300px;
+        min-width: 300px;
+        width: auto;
         .header-div {
           .user-image-div {
             .img {
@@ -203,7 +210,8 @@
           }
         }
         .img-div {
-          width: 300px;
+          min-width: 300px;
+          width: auto;
           height: 300px;
         }
         .message-div {

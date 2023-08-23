@@ -3,6 +3,10 @@
   margin: 0%;
 }
 
+body {
+  background: #a7d7c5;
+}
+
 div {
   display: flex;
 }
@@ -16,6 +20,7 @@ p {
   color: #212b27;
   font-style: normal;
   font-weight: 400;
+  white-space: pre-line;
 }
 
 .p-b {
@@ -170,6 +175,38 @@ p {
   width: 100%;
 }
 
+.width-90 {
+  width: 90%;
+}
+
+.width-80 {
+  width: 80%;
+}
+
+.width-60 {
+  width: 60%;
+}
+
+.width-50 {
+  width: 50%;
+}
+
+.width-40 {
+  width: 40%;
+}
+
+.width-30 {
+  width: 30%;
+}
+
+.width-20 {
+  width: 20%;
+}
+
+.width-10 {
+  width: 10%;
+}
+
 .width-600px {
   width: 600px;
 }
@@ -200,6 +237,10 @@ p {
 
 .width-250px {
   width: 250px;
+}
+
+.width-200px {
+  width: 200px;
 }
 
 .width-150px {
@@ -290,12 +331,24 @@ p {
   height: 250px;
 }
 
+.height-200px {
+  height: 200px;
+}
+
 .height-150px {
   height: 150px;
 }
 
 .height-100px {
   height: 100px;
+}
+
+.height-90px {
+  height: 90px;
+}
+
+.height-80px {
+  height: 80px;
 }
 
 .height-70px {
@@ -382,6 +435,10 @@ p {
   font-size: 10px;
 }
 
+.gap-40px {
+  gap: 40px;
+}
+
 .gap-30px {
   gap: 30px;
 }
@@ -402,8 +459,12 @@ p {
   gap: 10px;
 }
 
-.gap-15px {
-  gap: 15px;
+.gap-8px {
+  gap: 8px;
+}
+
+.gap-5px {
+  gap: 5px;
 }
 
 .gap-3px {

@@ -67,7 +67,7 @@ function Navbar({ children }: NavbarProps) {
       id="main"
       className="navbar-component-main column width-full height-full"
     >
-      <div className="navbar bg-w-c height-70px width-full a-i-c sh-x-s j-c-s-b">
+      <div className="navbar bg-w-c height-80px width-full a-i-c sh-x-s j-c-s-b">
         <div className="logo a-i-c j-c-c">
           <p className="logo-p p-f-s-700 t-d-l-u">POST.</p>
         </div>

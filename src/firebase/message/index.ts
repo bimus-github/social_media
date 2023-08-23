@@ -62,7 +62,6 @@ export async function getMessages() {
 
     querySnapshot.forEach((doc) => {
       data.push(doc.data() as Message_Type);
-      console.log(doc.data());
     });
 
     return { ok: true, e: [], data };
