@@ -73,7 +73,7 @@ function Navbar({ children }: NavbarProps) {
         </div>
 
         <div
-          className="input-search-div b-w-1px b-c b-r-5px a-i-c j-c-c padding-3px"
+          className="input-search-div sh-x-s b-w-1px b-c b-r-5px a-i-c j-c-c padding-3px"
           style={{
             display: pathname === "/me" ? "none" : "flex",
             visibility: pathname === "/me" ? "hidden" : "visible",

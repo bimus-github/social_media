@@ -36,4 +36,12 @@ export type Message_Type = {
   createdDate: string;
   updatedDate: string;
   likes: string[];
+  comments: Comment_Type[];
+};
+
+export type Comment_Type = {
+  userId: string;
+  userImage: string;
+  username: string;
+  comment: string;
 };

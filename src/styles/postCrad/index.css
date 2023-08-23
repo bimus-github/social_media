@@ -904,7 +904,7 @@ p {
   border: none;
 }
 .post-card-main-div .masonry-component .post-card-div .bottom-btns-div .comment-div:focus-within {
-  border: 1.534px solid;
+  border: 1px solid;
   border-color: #384d6c;
 }
 .post-card-main-div .masonry-component .post-card-div .bottom-btns-div .created-date-div p {

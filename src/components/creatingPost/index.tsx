@@ -75,6 +75,7 @@ function CreatingCard() {
       createdDate,
       updatedDate: "",
       likes: [],
+      comments: [],
     };
 
     createMessage(newMessageData)

@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client";
 import "@/styles/postCrad/index.css";
-import { Message_Type } from "@/types";
+import { Comment_Type, Message_Type } from "@/types";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import ReplyIcon from "@mui/icons-material/Reply";
@@ -56,6 +56,7 @@ const colorOfLikeIcon = (props: colorOfLikeIconProps) => {
 const Card = ({ data }: CardProps) => {
   const [likes, setLikes] = useState<string[]>(data.likes);
   const currentUser = useAppSelector((state) => state.currentUser);
+  const [comment, setComment] = useState("");
   const dispatch = useAppDispatch();
 
   const liked = colorOfLikeIcon({
@@ -80,6 +81,23 @@ const Card = ({ data }: CardProps) => {
       dispatch(messagesActions.updateMessage(newMessage));
       await updateMessageById(newMessage);
     }
+  };
+
+  const onClickComment = () => {
+    const newComment: Comment_Type = {
+      comment,
+      userId: currentUser.id,
+      userImage: currentUser.imageUrl,
+      username: currentUser.username,
+    };
+
+    const comments: Comment_Type[] = [...data.comments, newComment];
+
+    dispatch(messagesActions.updateMessage({ ...data, comments }));
+
+    updateMessageById({ ...data, comments });
+
+    setComment("");
   };
 
   return (
@@ -114,13 +132,28 @@ const Card = ({ data }: CardProps) => {
           </IconButton>
           <p>{likes.length}</p>
         </div>
-        <div className="comment-div b-r-5px gap-5px sh-x-s width-60">
+        <div className="comment-div b-r-5px gap-5px sh-x-s width-60 height-40px">
           <input
             className="input width-full"
+            value={comment}
             type="text"
+            onChange={(e) => setComment(e.target.value)}
             placeholder="eg: The best memory ... ."
           />
-          <IconButton>
+          <IconButton
+            onClick={onClickComment}
+            style={
+              comment.length === 0
+                ? {
+                    display: "none",
+                    visibility: "hidden",
+                  }
+                : {
+                    display: "flex",
+                    visibility: "visible",
+                  }
+            }
+          >
             <ReplyIcon fontSize="small" color="primary" />
           </IconButton>
         </div>
@@ -133,15 +166,15 @@ const Card = ({ data }: CardProps) => {
         <div className="comments-div b-r-10px sh-x-s gap-5px column bg-l-g-c width-90 padding-10px">
           <div className="title-comments-div a-i-c gap-10px">
             <p className="title-p font-s-25px">Comments</p>
-            <p className="length p-b c-2">123</p>
+            <p className="length p-b c-2">{data.comments.length}</p>
           </div>
 
           <div className="first-comment-div a-i-c gap-10px">
             <div className="img-div-user b-r-100px">
-              <img src={userImage} className="img" alt="" />
+              <img src={data.comments[0].userImage} className="img" alt="" />
             </div>
             <div className="comment-div">
-              <p className="comment-p">It is the first comment! </p>
+              <p className="comment-p">{data.comments[0].comment} </p>
             </div>
           </div>
         </div>
