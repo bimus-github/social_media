@@ -118,21 +118,24 @@ const Card = ({ data }: CardProps) => {
       </div>
 
       <div className="img-div j-c-c a-i-c ">
+        <div className="like-div a-i-c">
+          <IconButton className="like-btn" onClick={onClickLike}>
+            <FavoriteIcon color={liked ? "error" : "inherit"} />
+          </IconButton>
+          <p>{likes.length}</p>
+        </div>
         <img src={data.imageUrl} className="img" alt="" />
+        <div className="created-date-div">
+          <p>{data.createdDate}</p>
+        </div>
       </div>
 
       <div className="message-div padding-10px">
         <p className="message-p">{data.message}</p>
       </div>
 
-      <div className="bottom-btns-div j-c-s-b padding-l-10px padding-r-10px a-i-c">
-        <div className="like-div a-i-c">
-          <IconButton onClick={onClickLike}>
-            <FavoriteIcon color={liked ? "error" : "disabled"} />
-          </IconButton>
-          <p>{likes.length}</p>
-        </div>
-        <div className="comment-div b-r-5px gap-5px sh-x-s width-60 height-40px">
+      <div className="bottom-btns-div j-c-s-b padding-l-10px a-i-c j-c-c padding-r-10px a-i-c">
+        <div className="comment-div b-r-5px gap-5px sh-x-s width-80 height-40px">
           <input
             className="input width-full"
             value={comment}
@@ -157,9 +160,10 @@ const Card = ({ data }: CardProps) => {
             <ReplyIcon fontSize="small" color="primary" />
           </IconButton>
         </div>
-        <div className="created-date-div">
-          <p>{data.createdDate}</p>
-        </div>
+      </div>
+
+      <div className="width-full a-i-c j-c-c">
+        <div className="horizontal-line-div height-1px bg-pr-c width-95" />
       </div>
 
       <div className="width-full a-i-c j-c-c ">
@@ -169,14 +173,20 @@ const Card = ({ data }: CardProps) => {
             <p className="length p-b c-2">{data.comments.length}</p>
           </div>
 
-          <div className="first-comment-div a-i-c gap-10px">
-            <div className="img-div-user b-r-100px">
-              <img src={data.comments[0].userImage} className="img" alt="" />
+          {data.comments.length !== 0 ? (
+            <div className="first-comment-div a-i-c gap-10px">
+              <div className="img-div-user b-r-100px">
+                <img src={data.comments[0].userImage} className="img" alt="" />
+              </div>
+              <div className="comment-div">
+                <p className="comment-p">{data.comments[0].comment} </p>
+              </div>
             </div>
-            <div className="comment-div">
-              <p className="comment-p">{data.comments[0].comment} </p>
+          ) : (
+            <div className="first-comment-div a-i-c gap-10px">
+              There is no comments, yet!
             </div>
-          </div>
+          )}
         </div>
       </div>
     </div>

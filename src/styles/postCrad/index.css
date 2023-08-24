@@ -175,6 +175,10 @@ p {
   width: 100%;
 }
 
+.width-95 {
+  width: 95%;
+}
+
 .width-90 {
   width: 90%;
 }
@@ -401,6 +405,14 @@ p {
 
 .height-18px {
   height: 18px;
+}
+
+.height-2px {
+  height: 2px;
+}
+
+.height-1px {
+  height: 1px;
 }
 
 .font-s-50px {
@@ -853,11 +865,10 @@ p {
 .post-card-main-div .masonry-component {
   gap: 30px;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
 }
 .post-card-main-div .masonry-component .post-card-div {
-  min-width: 320px;
-  width: auto;
+  width: 350px;
   height: auto;
 }
 .post-card-main-div .masonry-component .post-card-div .header-div {
@@ -877,15 +888,35 @@ p {
   color: rgb(0, 200, 255);
 }
 .post-card-main-div .masonry-component .post-card-div .img-div {
-  min-width: 320px;
-  width: auto;
-  height: 320px;
+  width: 350px;
+  height: 350px;
   overflow: hidden;
   position: relative;
 }
 .post-card-main-div .masonry-component .post-card-div .img-div .img {
   width: 100%;
   position: absolute;
+  filter: brightness(80%);
+}
+.post-card-main-div .masonry-component .post-card-div .img-div .created-date-div {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+}
+.post-card-main-div .masonry-component .post-card-div .img-div .created-date-div p {
+  color: #fff;
+}
+.post-card-main-div .masonry-component .post-card-div .img-div .like-div {
+  position: absolute;
+  z-index: 10;
+  left: 5px;
+  bottom: 5px;
+}
+.post-card-main-div .masonry-component .post-card-div .img-div .like-div .like-btn {
+  color: #fff;
+}
+.post-card-main-div .masonry-component .post-card-div .img-div .like-div p {
+  color: #fff;
 }
 .post-card-main-div .masonry-component .post-card-div .message-div .message-p {
   max-height: 3.6em; /* Set the maximum height to accommodate three lines */
@@ -907,9 +938,6 @@ p {
   border: 1px solid;
   border-color: #384d6c;
 }
-.post-card-main-div .masonry-component .post-card-div .bottom-btns-div .created-date-div p {
-  color: #7c7c7c;
-}
 .post-card-main-div .masonry-component .post-card-div .comments-div .first-comment-div .img-div-user {
   width: 30px;
   height: 30px;
@@ -927,10 +955,10 @@ p {
     font-size: 30px;
   }
   .post-card-main-div .masonry-component {
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
   }
   .post-card-main-div .masonry-component .post-card-div {
-    min-width: 400px;
+    min-width: 350px;
     width: auto;
   }
   .post-card-main-div .masonry-component .post-card-div .header-div .user-image-div .img {
@@ -944,36 +972,9 @@ p {
     font-size: 20px;
   }
   .post-card-main-div .masonry-component .post-card-div .img-div {
-    min-width: 400px;
+    min-width: 350px;
     width: auto;
-    height: 400px;
-  }
-}
-@media (max-width: 740px) {
-  .post-card-main-div .title-div .title-p {
-    font-size: 30px;
-  }
-  .post-card-main-div .masonry-component {
-    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-  }
-  .post-card-main-div .masonry-component .post-card-div {
-    min-width: 500px;
-    width: auto;
-  }
-  .post-card-main-div .masonry-component .post-card-div .header-div .user-image-div .img {
-    width: 40px;
-    height: 40px;
-  }
-  .post-card-main-div .masonry-component .post-card-div .header-div .user-div .username-p {
-    font-size: 25px;
-  }
-  .post-card-main-div .masonry-component .post-card-div .header-div .user-div .job-p {
-    font-size: 20px;
-  }
-  .post-card-main-div .masonry-component .post-card-div .img-div {
-    min-width: 500px;
-    width: auto;
-    height: 500px;
+    height: 350px;
   }
 }
 @media (max-width: 600px) {

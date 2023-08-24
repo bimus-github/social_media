@@ -175,6 +175,10 @@ p {
   width: 100%;
 }
 
+.width-95 {
+  width: 95%;
+}
+
 .width-90 {
   width: 90%;
 }
@@ -401,6 +405,14 @@ p {
 
 .height-18px {
   height: 18px;
+}
+
+.height-2px {
+  height: 2px;
+}
+
+.height-1px {
+  height: 1px;
 }
 
 .font-s-50px {

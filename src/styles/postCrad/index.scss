@@ -10,10 +10,9 @@
   .masonry-component {
     gap: 30px;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     .post-card-div {
-      min-width: 320px;
-      width: auto;
+      width: 350px;
       height: auto;
       .header-div {
         align-items: center;
@@ -37,14 +36,36 @@
       }
 
       .img-div {
-        min-width: 320px;
-        width: auto;
-        height: 320px;
+        width: 350px;
+        height: 350px;
         overflow: hidden;
         position: relative;
         .img {
           width: 100%;
           position: absolute;
+          filter: brightness(80%);
+        }
+
+        .created-date-div {
+          position: absolute;
+          right: 5px;
+          bottom: 5px;
+          p {
+            color: #fff;
+          }
+        }
+
+        .like-div {
+          position: absolute;
+          z-index: 10;
+          left: 5px;
+          bottom: 5px;
+          .like-btn {
+            color: #fff;
+          }
+          p {
+            color: #fff;
+          }
         }
       }
 
@@ -73,12 +94,6 @@
         .comment-div:focus-within {
           border: 1px solid;
           border-color: v.$text-2-color;
-        }
-
-        .created-date-div {
-          p {
-            color: v.$text-light-color;
-          }
         }
       }
 
@@ -110,10 +125,10 @@
     }
 
     .masonry-component {
-      grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
 
       .post-card-div {
-        min-width: 400px;
+        min-width: 350px;
         width: auto;
         .header-div {
           .user-image-div {
@@ -132,54 +147,54 @@
           }
         }
         .img-div {
-          min-width: 400px;
+          min-width: 350px;
           width: auto;
-          height: 400px;
+          height: 350px;
         }
       }
     }
   }
 }
 
-@media (max-width: 740px) {
-  .post-card-main-div {
-    .title-div {
-      .title-p {
-        font-size: 30px;
-      }
-    }
+// @media (max-width: 740px) {
+//   .post-card-main-div {
+//     .title-div {
+//       .title-p {
+//         font-size: 30px;
+//       }
+//     }
 
-    .masonry-component {
-      grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+//     .masonry-component {
+//       grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
 
-      .post-card-div {
-        min-width: 500px;
-        width: auto;
-        .header-div {
-          .user-image-div {
-            .img {
-              width: 40px;
-              height: 40px;
-            }
-          }
-          .user-div {
-            .username-p {
-              font-size: 25px;
-            }
-            .job-p {
-              font-size: 20px;
-            }
-          }
-        }
-        .img-div {
-          min-width: 500px;
-          width: auto;
-          height: 500px;
-        }
-      }
-    }
-  }
-}
+//       .post-card-div {
+//         min-width: 500px;
+//         width: auto;
+//         .header-div {
+//           .user-image-div {
+//             .img {
+//               width: 40px;
+//               height: 40px;
+//             }
+//           }
+//           .user-div {
+//             .username-p {
+//               font-size: 25px;
+//             }
+//             .job-p {
+//               font-size: 20px;
+//             }
+//           }
+//         }
+//         .img-div {
+//           min-width: 500px;
+//           width: auto;
+//           height: 500px;
+//         }
+//       }
+//     }
+//   }
+// }
 
 @media (max-width: 600px) {
   .post-card-main-div {
@@ -211,11 +226,13 @@
             }
           }
         }
+
         .img-div {
           min-width: 250px;
           width: auto;
           height: 250px;
         }
+
         .message-div {
           .message-p {
             font-size: 14px;
