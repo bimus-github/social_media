@@ -37,6 +37,7 @@ export type Message_Type = {
   updatedDate: string;
   likes: string[];
   comments: Comment_Type[];
+  typeOfFile: File_Type;
 };
 
 export type Comment_Type = {
@@ -45,3 +46,10 @@ export type Comment_Type = {
   username: string;
   comment: string;
 };
+
+export enum File_Type {
+  "NONE" = 0,
+  "IMAGE" = 1,
+  "VIDEO" = 2,
+  "OTHER" = 3,
+}

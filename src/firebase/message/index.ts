@@ -1,6 +1,7 @@
 import { Message_Type } from "@/types";
 import {
   collection,
+  deleteDoc,
   doc,
   getDocs,
   query,
@@ -76,6 +77,14 @@ export async function updateMessageById(message: Message_Type) {
     const docRef = doc(database, collection_name, message.id);
 
     await updateDoc(docRef, message);
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function deleteMessageById(id: string) {
+  try {
+    await deleteDoc(doc(database, collection_name, id));
   } catch (error) {
     console.log(error);
   }

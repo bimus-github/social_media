@@ -13,7 +13,7 @@ import Picker from "emoji-picker-react";
 
 import { useAppDispatch, useAppSelector } from "@/strore/hooks";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
-import { Message_Type } from "@/types";
+import { File_Type, Message_Type } from "@/types";
 import { storage } from "@/firebase";
 import { createMessage } from "@/firebase/message";
 import { messagesByUserActions } from "@/strore/slices/messagesByUser";
@@ -21,6 +21,7 @@ import { messagesByUserActions } from "@/strore/slices/messagesByUser";
 function CreatingCard() {
   const currentUser = useAppSelector((state) => state.currentUser);
   const dispatch = useAppDispatch();
+  const [typeOfFile, setTypeOfFile] = useState<File_Type>(File_Type.NONE);
   const [openEmoji, setOpenEmoji] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
   const [imageUrl, setImageUrl] = useState<string>("");
@@ -29,6 +30,21 @@ function CreatingCard() {
   const onHandleSaveImage = (e: ChangeEvent<HTMLInputElement>) => {
     const image = e.target.files;
     if (image) {
+      if (image[0].type.match("image.*")) {
+        setTypeOfFile(File_Type.IMAGE);
+        console.log("image");
+      } else {
+        if (image[0].type.match("video.*")) {
+          console.log("video");
+
+          setTypeOfFile(File_Type.VIDEO);
+        } else {
+          console.log("other");
+
+          return setTypeOfFile(File_Type.OTHER);
+        }
+      }
+
       const storageRef = ref(storage, `messages_images/${image[0].name}`);
       const uploadTask = uploadBytesResumable(storageRef, image[0]);
 
@@ -76,6 +92,7 @@ function CreatingCard() {
       updatedDate: "",
       likes: [],
       comments: [],
+      typeOfFile,
     };
 
     createMessage(newMessageData)
@@ -89,6 +106,7 @@ function CreatingCard() {
         setLoading(false);
         setMessage("");
         setImageUrl("");
+        setTypeOfFile(File_Type.NONE);
       });
   };
 
@@ -171,11 +189,28 @@ function CreatingCard() {
           {loading ? (
             <CircularProgress color="success" />
           ) : (
-            <img
-              src={imageUrl}
-              alt=""
-              className="img height-full b-r-30px sh-x-s"
-            />
+            <>
+              {typeOfFile === File_Type.IMAGE && (
+                <img
+                  src={imageUrl}
+                  alt=""
+                  className="img height-full b-r-30px sh-x-s"
+                />
+              )}
+
+              {typeOfFile === File_Type.VIDEO && (
+                <video
+                  src={imageUrl}
+                  controls
+                  autoPlay
+                  className="img height-full width-full b-r-30px sh-x-s"
+                />
+              )}
+
+              {typeOfFile === File_Type.OTHER && (
+                <p>You can choose only images or videos!</p>
+              )}
+            </>
           )}
           {imageUrl.length !== 0 && (
             <IconButton
