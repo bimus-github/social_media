@@ -93,6 +93,22 @@ export const Card = ({ data }: CardProps) => {
     }
   };
 
+  const makeUnvisibile = () => {
+    updateMessageById({ ...data, visibile: false }).then(() => {
+      dispatch(messagesActions.updateMessage({ ...data, visibile: false }));
+    });
+  };
+
+  const makeVisibile = () => {
+    updateMessageById({ ...data, visibile: true }).then(() => {
+      dispatch(messagesActions.updateMessage({ ...data, visibile: true }));
+    });
+  };
+
+  if (!data.visibile && data.userId !== currentUser.id) {
+    return null;
+  }
+
   return (
     <div className="post-card-div sh-x-s column b-r-20px gap-20px padding-t-20px padding-b-20px">
       <div className="header-div width-90 gap-10px j-c-s-b padding-10px">
@@ -133,15 +149,29 @@ export const Card = ({ data }: CardProps) => {
                   <DeleteIcon color="primary" />
                   <p>Delete</p>
                 </button>
+                {data.visibile && (
+                  <button
+                    onClick={makeUnvisibile}
+                    className="icon-button width-full gap-5px a-i-c"
+                  >
+                    <VisibilityIcon color="primary" />
+                    <p>Visibile</p>
+                  </button>
+                )}
+                {!data.visibile && (
+                  <button
+                    onClick={makeVisibile}
+                    className="icon-button width-full gap-5px a-i-c"
+                  >
+                    <VisibilityOffIcon color="primary" />
+                    <p>Unvisibile</p>
+                  </button>
+                )}
               </>
             )}
             <button className="icon-button width-full gap-5px a-i-c">
               <ShareIcon color="primary" />
               <p>Share</p>
-            </button>
-            <button className="icon-button width-full gap-5px a-i-c">
-              <VisibilityIcon color="primary" />
-              <p>Visibile</p>
             </button>
           </div>
           <IconButton onClick={() => setOpenOptionBtns((p) => !p)}>

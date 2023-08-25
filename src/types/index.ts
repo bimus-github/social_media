@@ -38,6 +38,7 @@ export type Message_Type = {
   likes: string[];
   comments: Comment_Type[];
   typeOfFile: File_Type;
+  visibile: boolean;
 };
 
 export type Comment_Type = {

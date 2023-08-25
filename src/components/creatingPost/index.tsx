@@ -7,7 +7,7 @@ import AttachmentIcon from "@mui/icons-material/Attachment";
 import EmojiEmotionsIcon from "@mui/icons-material/EmojiEmotions";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SendIcon from "@mui/icons-material/Send";
-import { CircularProgress, IconButton } from "@mui/material";
+import { Checkbox, CircularProgress, IconButton } from "@mui/material";
 
 import Picker from "emoji-picker-react";
 
@@ -22,6 +22,7 @@ function CreatingCard() {
   const currentUser = useAppSelector((state) => state.currentUser);
   const dispatch = useAppDispatch();
   const [typeOfFile, setTypeOfFile] = useState<File_Type>(File_Type.NONE);
+  const [visibile, setVisibile] = useState<boolean>(true);
   const [openEmoji, setOpenEmoji] = useState<boolean>(false);
   const [message, setMessage] = useState<string>("");
   const [imageUrl, setImageUrl] = useState<string>("");
@@ -93,6 +94,7 @@ function CreatingCard() {
       likes: [],
       comments: [],
       typeOfFile,
+      visibile: false,
     };
 
     createMessage(newMessageData)
@@ -146,6 +148,13 @@ function CreatingCard() {
                 <AttachmentIcon className="file-icon icon" />
                 <input type="file" hidden onChange={onHandleSaveImage} />
               </label>
+              <div className="icon-div padding-10px">
+                <Checkbox
+                  value={!visibile}
+                  onChange={(e) => setVisibile(e.target.checked)}
+                />
+                <p className="check-box-p">Make a private</p>
+              </div>
             </div>
             <IconButton
               style={
