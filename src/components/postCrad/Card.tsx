@@ -14,6 +14,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import ShareIcon from "@mui/icons-material/Share";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import Link from "next/link";
 
 interface CardProps {
   data: Message_Type;
@@ -200,6 +201,13 @@ export const Card = ({ data }: CardProps) => {
 
       <div className="message-div padding-10px">
         <p className="message-p">{data.message}</p>
+        <Link
+          rel="preload"
+          className="see-more-btn"
+          href={`/posts/post/${data.id}`}
+        >
+          See more
+        </Link>
       </div>
 
       <div className="bottom-btns-div j-c-s-b padding-l-10px a-i-c j-c-c padding-r-10px a-i-c">

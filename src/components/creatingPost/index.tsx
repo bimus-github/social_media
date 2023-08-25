@@ -33,15 +33,10 @@ function CreatingCard() {
     if (image) {
       if (image[0].type.match("image.*")) {
         setTypeOfFile(File_Type.IMAGE);
-        console.log("image");
       } else {
         if (image[0].type.match("video.*")) {
-          console.log("video");
-
           setTypeOfFile(File_Type.VIDEO);
         } else {
-          console.log("other");
-
           return setTypeOfFile(File_Type.OTHER);
         }
       }

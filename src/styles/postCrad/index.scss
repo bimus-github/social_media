@@ -101,6 +101,7 @@
       }
 
       .message-div {
+        position: relative;
         .message-p {
           max-height: calc(
             1.2em * 3
@@ -111,6 +112,12 @@
           display: -webkit-box; /* Use legacy webkit box for multi-line truncation */
           -webkit-line-clamp: 3; /* Limit the content to three lines */
           -webkit-box-orient: vertical; /* Set vertical orientation for multi-line truncation */
+        }
+
+        .see-more-btn {
+          position: absolute;
+          bottom: -10px;
+          left: 10px;
         }
       }
 

@@ -7,13 +7,13 @@ import TextsmsIcon from "@mui/icons-material/Textsms";
 import PeopleIcon from "@mui/icons-material/People";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { NavbarRoutes } from "@/types";
-import { usePathname, useRouter } from "next/navigation";
+import { useParams, usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 
 const routes: NavbarRoutes[] = [
   {
     name: "Home",
-    path: "/",
+    path: "/home",
     icon: <HomeIcon className="icon" />,
   },
   {
@@ -42,8 +42,6 @@ function Navbar({ children }: NavbarProps) {
   const pathname = usePathname();
 
   const [sidenavIsOpen, setSidenavIsOpen] = useState<boolean>(false);
-
-  console.log("Navbar component worked ");
 
   /* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
   function openNav() {
@@ -98,8 +96,9 @@ function Navbar({ children }: NavbarProps) {
               <p
                 className="c-2"
                 style={{
-                  textDecorationLine:
-                    pathname === route.path ? "underline" : "",
+                  textDecorationLine: pathname.includes(route.path)
+                    ? "underline"
+                    : "",
                 }}
               >
                 {route.name}
@@ -124,7 +123,7 @@ function Navbar({ children }: NavbarProps) {
               onClick={() => handleChangeRouter(route.path)}
               className="font-s-25px"
               style={
-                route.path === pathname
+                pathname.includes(route.path)
                   ? {
                       textDecorationLine: "underline",
                       textDecorationColor: "#27b8f6",

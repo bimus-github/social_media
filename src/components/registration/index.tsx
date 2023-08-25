@@ -53,10 +53,12 @@ function Registration(props: CheckingUserProps) {
   return (
     <div className="width-full height-full bg-c">
       {isLoggedIn ? (
-        <div className="bg-c width-full height-full">
-          {/* if there is user */}
-          <Navbar>{props.children[1]}</Navbar>
-        </div>
+        <Navbar>
+          <div className="bg-c width-full height-full">
+            {/* if there is user */}
+            {props.children[1]}
+          </div>
+        </Navbar>
       ) : (
         <div className="bg-c">{props.children[0]}</div>
       )}

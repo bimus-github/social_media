@@ -11,8 +11,6 @@ const imageUser =
 function AccountCard() {
   const users = useAppSelector((state) => state.users);
 
-  console.log(users);
-
   return (
     <div className="account-card-main-div width-90 column gap-40px bg-w-c sh-x-s padding-30px b-r-20px">
       <div className="title-div a-i-c gap-10px">
