@@ -116,17 +116,17 @@ function CurrentPost({ params }: { params: { id: string } }) {
                 src={post.imageUrl}
                 controls
                 autoPlay
-                className="height-full sh-x-s b-r-10px"
+                className="width-full sh-x-s b-r-10px"
               />
             )}
           </div>
         </div>
 
         <div className="right-div width-60 column gap-20px">
-          <div className="header-div width-50 j-c-s-b padding-5px bg-l-g-c">
+          <div className="header-div j-c-s-b padding-5px width-full">
             <div className=" gap-10px">
               <div className="user-img-div width-60px height-60px b-r-100px j-c-c a-i-c">
-                <img src={post?.userImage} className="width-full img" alt="" />
+                <img src={post?.userImage} className="height-full img" alt="" />
               </div>
               <div className="name-job-div column j-c-c ">
                 <p className="name-p font-s-25px">{post?.firstname}</p>
@@ -217,9 +217,12 @@ function CurrentPost({ params }: { params: { id: string } }) {
 
             <div className="comments-div bg-l-g-c b-r-10px margin-10px padding-10px column gap-20px">
               <div className="title-p font-s-25px c-2">Comments</div>
-              <div className="comments column gap-10px">
+              <div className="comments column gap-20px a-i-c padding-10px">
                 {post?.comments.map((comment, index) => (
-                  <div className="comment-div gap-10px" key={index}>
+                  <div
+                    className="comment-div width-90 gap-10px bg-w b-r-10px padding-10px sh-x-s margin-5px"
+                    key={index}
+                  >
                     <div className="user-img-div width-50px height-50px b-r-100px">
                       <img
                         src={comment.userImage}
@@ -228,7 +231,10 @@ function CurrentPost({ params }: { params: { id: string } }) {
                       />
                     </div>
                     <div className="comment-msg-div column gap-5px">
-                      <Link href={""} className="username-div">
+                      <Link
+                        href={`users/user/${comment.userId}`}
+                        className="username-div"
+                      >
                         {comment.username}
                       </Link>
                       <p className="message-p">{comment.comment}</p>

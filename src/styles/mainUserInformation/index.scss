@@ -19,10 +19,15 @@
   }
 
   .information-div {
-    .img-div {
-      .img {
-        width: 200px;
+    .img-btns-div {
+      .img-div {
+        position: relative;
+        overflow: hidden;
         height: 200px;
+        width: 200px;
+        .img {
+          position: absolute;
+        }
       }
       .edit-btn-for-phones-div {
         display: none;
@@ -53,7 +58,7 @@
 @media (max-width: 900px) {
   .main-information-div {
     .information-div {
-      .img-div {
+      .img-btns-div {
         .edit-btn-for-phones-div {
           display: flex;
           visibility: visible;

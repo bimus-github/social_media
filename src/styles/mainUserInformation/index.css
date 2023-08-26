@@ -63,6 +63,10 @@ p {
   background-color: #a7d7c5;
 }
 
+.bg-w {
+  background-color: #fff;
+}
+
 .bg-l-c {
   background-color: #c1e3d6;
 }
@@ -890,11 +894,16 @@ p {
   font-size: 30px;
   color: #384d6c;
 }
-.main-information-div .information-div .img-div .img {
-  width: 200px;
+.main-information-div .information-div .img-btns-div .img-div {
+  position: relative;
+  overflow: hidden;
   height: 200px;
+  width: 200px;
 }
-.main-information-div .information-div .img-div .edit-btn-for-phones-div {
+.main-information-div .information-div .img-btns-div .img-div .img {
+  position: absolute;
+}
+.main-information-div .information-div .img-btns-div .edit-btn-for-phones-div {
   display: none;
   visibility: hidden;
 }
@@ -910,7 +919,7 @@ p {
   }
 }
 @media (max-width: 900px) {
-  .main-information-div .information-div .img-div .edit-btn-for-phones-div {
+  .main-information-div .information-div .img-btns-div .edit-btn-for-phones-div {
     display: flex;
     visibility: visible;
   }

@@ -145,17 +145,19 @@ function MainUserInfromation({ currentUser }: Props) {
 
       <div className="information-div gap-20px j-c-s-b">
         <div className="information-div gap-20px ">
-          <div className="img-div column gap-10px j-c-c a-i-c">
+          <div className="img-btns-div column gap-10px j-c-c a-i-c">
             {!imageUplaodPercentage ? (
-              <img
-                src={
-                  currentUser.imageUrl.length !== 0
-                    ? currentUser.imageUrl
-                    : profileImage
-                }
-                alt="prfile image"
-                className="img b-r-100px"
-              />
+              <div className="img-div b-r-100px a-i-c j-c-c">
+                <img
+                  src={
+                    currentUser.imageUrl.length !== 0
+                      ? currentUser.imageUrl
+                      : profileImage
+                  }
+                  alt="prfile image"
+                  className="img height-full"
+                />
+              </div>
             ) : (
               <div className="img b-r-100px j-c-c a-i-c ">
                 <CircularProgress color="success" />

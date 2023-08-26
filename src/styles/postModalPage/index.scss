@@ -2,24 +2,21 @@
 }
 
 .right-div {
-  position: relative;
-  overflow-x: hidden;
-  overflow-y: auto;
-  height: 600px;
   .header-div {
-    position: fixed;
+    width: 100%;
     .user-img-div {
       position: relative;
       overflow: hidden;
       .img {
-        position: absolute;
+        position: relative;
       }
     }
   }
 
   .main-content-div {
-    position: absolute;
-    top: 100px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 500px;
     .comment-input-div {
       .input-div {
         padding: 5px;
@@ -33,7 +30,7 @@
 
     .comments-div {
       .comments {
-        max-height: 500px;
+        max-height: 300px;
         overflow-y: auto;
         .comment-div {
           .user-img-div {

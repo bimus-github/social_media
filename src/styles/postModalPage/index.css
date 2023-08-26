@@ -1,22 +1,17 @@
-.right-div {
-  position: relative;
-  overflow-x: hidden;
-  overflow-y: auto;
-  height: 600px;
-}
 .right-div .header-div {
-  position: fixed;
+  width: 100%;
 }
 .right-div .header-div .user-img-div {
   position: relative;
   overflow: hidden;
 }
 .right-div .header-div .user-img-div .img {
-  position: absolute;
+  position: relative;
 }
 .right-div .main-content-div {
-  position: absolute;
-  top: 100px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 500px;
 }
 .right-div .main-content-div .comment-input-div .input-div {
   padding: 5px;
@@ -27,7 +22,7 @@
   width: 100%;
 }
 .right-div .main-content-div .comments-div .comments {
-  max-height: 500px;
+  max-height: 300px;
   overflow-y: auto;
 }
 .right-div .main-content-div .comments-div .comments .comment-div .user-img-div {
