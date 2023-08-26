@@ -1,0 +1,39 @@
+.right-div {
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 600px;
+}
+.right-div .header-div {
+  position: fixed;
+}
+.right-div .header-div .user-img-div {
+  position: relative;
+  overflow: hidden;
+}
+.right-div .header-div .user-img-div .img {
+  position: absolute;
+}
+.right-div .main-content-div {
+  position: absolute;
+  top: 100px;
+}
+.right-div .main-content-div .comment-input-div .input-div {
+  padding: 5px;
+}
+.right-div .main-content-div .comment-input-div .input-div .input {
+  outline: none;
+  border: none;
+  width: 100%;
+}
+.right-div .main-content-div .comments-div .comments {
+  max-height: 500px;
+  overflow-y: auto;
+}
+.right-div .main-content-div .comments-div .comments .comment-div .user-img-div {
+  position: relative;
+  overflow: hidden;
+}
+.right-div .main-content-div .comments-div .comments .comment-div .user-img-div .img {
+  position: absolute;
+}/*# sourceMappingURL=index.css.map */

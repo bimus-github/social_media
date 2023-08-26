@@ -1,14 +1,13 @@
 "use client";
 
 import React, {
-  FC,
   MouseEventHandler,
-  ReactNode,
   useCallback,
   useEffect,
   useRef,
 } from "react";
 import "@/styles/modalForCard/index.css";
+
 import { useRouter } from "next/navigation";
 
 const Modal = ({ children }: { children: React.ReactNode }) => {
@@ -43,7 +42,7 @@ const Modal = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <div ref={overlay} onClick={onClick} className="modal-overlay">
-      <div ref={wrapper} className="modal-content">
+      <div ref={wrapper} className="modal-content width-90">
         {children}
       </div>
     </div>

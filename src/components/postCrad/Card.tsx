@@ -15,26 +15,11 @@ import ShareIcon from "@mui/icons-material/Share";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import Link from "next/link";
+import { colorOfLikeIcon } from "@/utils/colorOfLikeIcon";
 
 interface CardProps {
   data: Message_Type;
 }
-
-interface colorOfLikeIconProps {
-  likes: string[];
-  currentUserId: string;
-}
-
-const colorOfLikeIcon = (props: colorOfLikeIconProps) => {
-  const { currentUserId, likes } = props;
-
-  const liked = likes.find((like) => like === currentUserId);
-  if (liked?.length) {
-    return true;
-  }
-
-  return false;
-};
 
 export const Card = ({ data }: CardProps) => {
   const dispatch = useAppDispatch();
