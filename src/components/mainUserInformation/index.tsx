@@ -4,11 +4,12 @@ import { FormEvent, useEffect, useState } from "react";
 import "@/styles/mainUserInformation/index.css";
 import { User_Type } from "@/types";
 
-import { CircularProgress } from "@mui/material";
+import { CircularProgress, IconButton } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import EditIcon from "@mui/icons-material/Edit";
+import LogoutIcon from "@mui/icons-material/Logout";
 
-import { storage } from "@/firebase";
+import { auth, storage } from "@/firebase";
 import { currentUserActions } from "@/strore/slices/currentUser";
 import { useAppDispatch, useAppSelector } from "@/strore/hooks";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
@@ -16,6 +17,8 @@ import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { updateUser } from "@/firebase/user";
 import Button from "@/components/button";
 import Input from "@/components/input";
+import { signOut } from "firebase/auth";
+import { useRouter } from "next/navigation";
 
 const profileImage =
   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-4TTdIlL3swAddqR7ZY42BAgAo5Xj4lawocuvnjIuEVXm7ref0Xb9D0LTqfCNyPVGpy8&usqp=CAU";
@@ -25,6 +28,7 @@ interface Props {
 }
 function MainUserInfromation({ currentUser }: Props) {
   const dispatch = useAppDispatch();
+  const router = useRouter();
 
   const [loading, setLoading] = useState<boolean>(false);
   const [openEditProfile, setOpenEditProfile] = useState<boolean>(false);
@@ -126,21 +130,38 @@ function MainUserInfromation({ currentUser }: Props) {
       });
   };
 
+  const onLogOut = () => {
+    var result = confirm("Are you sure you want to log out?");
+
+    if (result) {
+      signOut(auth).then(() => {
+        // logged out
+      });
+      router.push("/");
+    }
+  };
+
   return (
     <div className="main-information-div width-90 bg-w-c sh-x-s padding-30px b-r-20px">
-      <div className="title-div a-i-c gap-10px">
-        <p className="title-p t-d-l-u">User Profile</p>
-        {!openEditProfile ? (
-          <EditIcon
-            onClick={() => setOpenEditProfile((p) => !p)}
-            className="edit-title-icon"
-          />
-        ) : (
-          <CloseIcon
-            onClick={() => setOpenEditProfile((p) => !p)}
-            className="edit-title-icon"
-          />
-        )}
+      <div className="title-div a-i-c j-c-s-b gap-10px">
+        <div className="title-div a-i-c gap-10px">
+          <p className="title-p t-d-l-u">User Profile</p>
+          {!openEditProfile ? (
+            <EditIcon
+              onClick={() => setOpenEditProfile((p) => !p)}
+              className="edit-title-icon"
+            />
+          ) : (
+            <CloseIcon
+              onClick={() => setOpenEditProfile((p) => !p)}
+              className="edit-title-icon"
+            />
+          )}
+        </div>
+
+        <IconButton onClick={onLogOut}>
+          <LogoutIcon color="primary" fontSize="large" />
+        </IconButton>
       </div>
 
       <div className="information-div gap-20px j-c-s-b">
@@ -180,7 +201,7 @@ function MainUserInfromation({ currentUser }: Props) {
 
           <div className="informations column gap-10px j-c-c">
             <p className="name-p c-2 p-b">
-              {currentUser.firstname.length === 0 ? (
+              {firstname.length === 0 ? (
                 <p style={{ color: "red" }}>Please create your firstname!</p>
               ) : (
                 firstname
@@ -188,7 +209,7 @@ function MainUserInfromation({ currentUser }: Props) {
               {lastname}
             </p>
             <p className="user-name-p c-l">
-              {currentUser.username.length === 0 ? (
+              {username.length === 0 ? (
                 <p style={{ color: "red" }}>Please create your username!</p>
               ) : (
                 username
@@ -202,14 +223,14 @@ function MainUserInfromation({ currentUser }: Props) {
               )}
             </p>
             <p className="location c-l">
-              {currentUser.location.length === 0 ? (
+              {location.length === 0 ? (
                 <p style={{ color: "red" }}>Please create your location!</p>
               ) : (
                 location
               )}
             </p>
             <p className="about-p c-2">
-              {currentUser.about.length === 0 ? (
+              {about.length === 0 ? (
                 <p style={{ color: "red" }}>
                   Please create some infromation about yourself!
                 </p>

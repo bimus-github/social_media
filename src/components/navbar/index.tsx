@@ -9,6 +9,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { NavbarRoutes } from "@/types";
 import { useParams, usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
+import Link from "next/link";
 
 const routes: NavbarRoutes[] = [
   {
@@ -67,7 +68,9 @@ function Navbar({ children }: NavbarProps) {
     >
       <div className="navbar bg-w-c height-80px width-full a-i-c sh-x-s j-c-s-b">
         <div className="logo a-i-c j-c-c">
-          <p className="logo-p p-f-s-700 t-d-l-u">POST.</p>
+          <Link href={"/home"}>
+            <p className="logo-p p-f-s-700 t-d-l-u">POST.</p>
+          </Link>
         </div>
 
         <div

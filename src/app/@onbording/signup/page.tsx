@@ -6,9 +6,11 @@ import { addUser } from "@/firebase/user";
 import { ErrorMessages, User_Type } from "@/types";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 function SignUp() {
+  const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(ErrorMessages.NOT_ERROR);
@@ -35,7 +37,8 @@ function SignUp() {
           };
           await addUser(newUser);
         }
-        return <Link href={"/"} />;
+
+        router.push("/home");
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -50,7 +53,6 @@ function SignUp() {
       })
       .finally(() => {
         setLoading(false);
-        return <Link href={"/"} />;
       });
   };
   return (

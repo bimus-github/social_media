@@ -102,13 +102,13 @@ function CurrentPost({ params }: { params: { id: string } }) {
   return (
     <Modal>
       <div className="width-full height-full row">
-        <div className="left-div width-40 a-i-c j-c-c">
-          <div className="file-div height-500px">
+        <div className="left-div width-40  a-i-c j-c-c">
+          <div className="file-div width-full height-600px">
             {post?.typeOfFile === File_Type.IMAGE && (
               <img
                 src={post.imageUrl}
                 alt=""
-                className="height-full sh-x-s b-r-10px"
+                className="width-full sh-x-s b-r-10px"
               />
             )}
             {post?.typeOfFile === File_Type.VIDEO && (
