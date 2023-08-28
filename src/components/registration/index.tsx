@@ -10,6 +10,7 @@ import { useAppDispatch } from "@/strore/hooks";
 import { getMessages } from "@/firebase/message";
 import { messagesActions } from "@/strore/slices/messages";
 import { usersActions } from "@/strore/slices/users";
+import { useRouter } from "next/navigation";
 
 interface CheckingUserProps {
   children: React.ReactNode[];
@@ -17,6 +18,8 @@ interface CheckingUserProps {
 
 function Registration(props: CheckingUserProps) {
   const [isLoggedIn, setIsUserLogged] = useState(false);
+
+  const router = useRouter();
 
   const dispatch = useAppDispatch();
 
@@ -47,8 +50,15 @@ function Registration(props: CheckingUserProps) {
       }
     });
 
+    if (isLoggedIn) {
+      router.push("/home");
+    }
+    if (!isLoggedIn) {
+      router.push("/");
+    }
+
     return unsubscribe;
-  }, [dispatch]);
+  }, [dispatch, isLoggedIn, router]);
 
   return (
     <div className="width-full height-full bg-c">
