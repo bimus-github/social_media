@@ -6,18 +6,13 @@ import "@/styles/accountCard/index.css";
 import { User_Type } from "@/types";
 import Link from "next/link";
 
-const imageUser =
-  "https://firebasestorage.googleapis.com/v0/b/app-nextjs-1.appspot.com/o/profile_images%2Fphoto_2023-07-04%2009.52.12.jpeg?alt=media&token=43145a1d-a5ba-467f-a19b-7448553db3cf";
-
-function AccountCard() {
-  const users = useAppSelector((state) => state.users);
-
+function AccountCard({ users }: { users: User_Type[] }) {
   return (
     <div className="account-card-main-div width-90 column gap-40px bg-w-c sh-x-s padding-30px b-r-20px">
       <div className="title-div a-i-c gap-10px">
         <p className="title-p t-d-l-u c-2">Users</p>
       </div>
-      <div className="account-card-div">
+      <div style={{ overflowY: "auto" }} className="account-card-div">
         {users.map((user, i) => (
           <Card key={i} user={user} />
         ))}
