@@ -8,8 +8,9 @@ import PeopleIcon from "@mui/icons-material/People";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { NavbarRoutes } from "@/types";
 import { useParams, usePathname, useRouter } from "next/navigation";
-import { useState } from "react";
+import { FormEvent, MouseEvent, useState } from "react";
 import Link from "next/link";
+import { IconButton } from "@mui/material";
 
 const routes: NavbarRoutes[] = [
   {
@@ -43,6 +44,7 @@ function Navbar({ children }: NavbarProps) {
   const pathname = usePathname();
 
   const [sidenavIsOpen, setSidenavIsOpen] = useState<boolean>(false);
+  const [search, setSearch] = useState<string>("");
 
   /* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
   function openNav() {
@@ -61,6 +63,18 @@ function Navbar({ children }: NavbarProps) {
   const handleChangeRouter = (path: string) => {
     router.push(path);
   };
+
+  const onSearch = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (search.length === 0) return;
+
+    if (pathname === "/users") {
+      router.push(`/users/search/${search}`);
+      return;
+    }
+    router.push(`/posts/search/${search}`);
+  };
+
   return (
     <div
       id="main"
@@ -73,20 +87,25 @@ function Navbar({ children }: NavbarProps) {
           </Link>
         </div>
 
-        <div
-          className="input-search-div sh-x-s b-w-1px b-c b-r-5px a-i-c j-c-c padding-3px"
+        <form
+          onSubmit={onSearch}
+          className="input-search-form sh-x-s b-w-1px b-c b-r-5px a-i-c j-c-c padding-3px"
           style={{
             display: pathname === "/me" ? "none" : "flex",
             visibility: pathname === "/me" ? "hidden" : "visible",
           }}
         >
           <input
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
             type="text"
             className="input-search padding-l-10px height-35px b-n"
             placeholder="Search user or post ... "
           />
-          <SearchIcon color="primary" />
-        </div>
+          <IconButton type="button">
+            <SearchIcon color="primary" />
+          </IconButton>
+        </form>
 
         <div className="routes-div j-c-s-a">
           {routes.map((route, i) => (

@@ -63,6 +63,10 @@ p {
   background-color: #a7d7c5;
 }
 
+.bg-w {
+  background-color: #fff;
+}
+
 .bg-l-c {
   background-color: #c1e3d6;
 }
@@ -885,10 +889,10 @@ p {
   font-size: 25px;
   color: #384d6c;
 }
-.navbar-component-main .navbar .input-search-div {
+.navbar-component-main .navbar .input-search-form {
   width: 300px;
 }
-.navbar-component-main .navbar .input-search-div .input-search {
+.navbar-component-main .navbar .input-search-form .input-search {
   width: 100%;
   outline: none;
 }
@@ -933,7 +937,7 @@ p {
   .navbar-component-main .navbar .logo p {
     font-size: 24px;
   }
-  .navbar-component-main .navbar .input-search-div {
+  .navbar-component-main .navbar .input-search-form {
     width: 220px;
   }
   .navbar-component-main .navbar .routes-div {
@@ -947,7 +951,7 @@ p {
   .navbar-component-main .navbar .logo p {
     font-size: 22px;
   }
-  .navbar-component-main .navbar .input-search-div {
+  .navbar-component-main .navbar .input-search-form {
     width: 200px;
   }
   .navbar-component-main .navbar .routes-div {
@@ -961,7 +965,7 @@ p {
   .navbar-component-main .navbar .logo p {
     font-size: 20px;
   }
-  .navbar-component-main .navbar .input-search-div {
+  .navbar-component-main .navbar .input-search-form {
     width: 200px;
   }
   .navbar-component-main .navbar .routes-div {

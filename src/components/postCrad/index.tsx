@@ -15,7 +15,12 @@ function PostCrad({ title, data }: Props) {
       <div className="title-div a-i-c gap-10px">
         <p className="title-p t-d-l-u c-2">{title}</p>
       </div>
-      <div className="masonry-component width-full height-full ">
+      <div
+        style={{
+          overflowY: "auto",
+        }}
+        className="masonry-component width-full height-full"
+      >
         {data.length !== 0 &&
           data.map((message, i) => <Card data={message} key={i} />)}
       </div>
