@@ -51,7 +51,7 @@ function Registration(props: CheckingUserProps) {
     });
 
     if (isLoggedIn) {
-      router.push("/home");
+      router.push("/posts");
     }
     if (!isLoggedIn) {
       router.push("/");

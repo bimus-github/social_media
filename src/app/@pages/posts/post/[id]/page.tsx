@@ -103,7 +103,7 @@ function CurrentPost({ params }: { params: { id: string } }) {
     <Modal>
       <div className="width-full height-full row">
         <div className="left-div width-40  a-i-c j-c-c">
-          <div className="file-div width-full height-600px">
+          <div className="file-div width-90 height-600px">
             {post?.typeOfFile === File_Type.IMAGE && (
               <img
                 src={post.imageUrl}
@@ -174,7 +174,7 @@ function CurrentPost({ params }: { params: { id: string } }) {
             </div>
           </div>
 
-          <div className="main-content-div width-full column gap-20px padding-l-10px">
+          <div className="main-content-div width-95 column gap-20px padding-l-10px">
             <div className="message-div">
               <p>{post?.message}</p>
             </div>

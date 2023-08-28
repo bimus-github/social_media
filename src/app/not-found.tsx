@@ -9,7 +9,7 @@ export default function NotFound() {
 
   useEffect(() => {
     const redirectTimer = setTimeout(() => {
-      router.push("/home"); // Replace '/' with the desired home page route
+      router.push("/posts"); // Replace '/' with the desired home page route
     }, 3000); // 5000 milliseconds = 5 seconds
 
     return () => clearTimeout(redirectTimer); // Clear the timer when the component unmounts

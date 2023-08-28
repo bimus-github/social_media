@@ -38,7 +38,7 @@ function SignUp() {
           await addUser(newUser);
         }
 
-        router.push("/home");
+        router.push("/posts");
       })
       .catch((error) => {
         const errorCode = error.code;

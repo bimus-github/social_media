@@ -13,11 +13,11 @@ import Link from "next/link";
 import { IconButton } from "@mui/material";
 
 const routes: NavbarRoutes[] = [
-  {
-    name: "Home",
-    path: "/home",
-    icon: <HomeIcon className="icon" />,
-  },
+  // {
+  //   name: "Home",
+  //   path: "/posts",
+  //   icon: <HomeIcon className="icon" />,
+  // },
   {
     name: "Posts",
     path: "/posts",
@@ -82,7 +82,7 @@ function Navbar({ children }: NavbarProps) {
     >
       <div className="navbar bg-w-c height-80px width-full a-i-c sh-x-s j-c-s-b">
         <div className="logo a-i-c j-c-c">
-          <Link href={"/home"}>
+          <Link href={"/posts"}>
             <p className="logo-p p-f-s-700 t-d-l-u">POST.</p>
           </Link>
         </div>
